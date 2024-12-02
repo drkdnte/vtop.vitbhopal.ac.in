@@ -649,103 +649,47 @@
                                                 </th>
                                             </tr>
                                         </thead>
-                                        <tbody class="text-primary text-sm">
-                                            <tr class="odd">
-                                                <td class="sorting_1"></td>
-                                                <td class="text-primary text-nowrap" style="color:red; font-size:85%;"  >L2117529</td>
-                                                <td class="text-primary text-nowrap" style="color:red; font-size:85%;"  >Bhopal</td>
-                                                <td class="text-primary text-nowrap" style="color:red; font-size:85%;"  >Exploring bhopal</td>
-                                                <td class="text-primary text-nowrap" style="color:red; font-size:85%;"  >OUTING</td>
-                                                <td class="text-primary text-nowrap" style="color:red; font-size:85%;"  >01-DEC-2024 06:30 AM</td>
-                                                <td class="text-primary text-nowrap" style="color:red; font-size:85%;"  >01-DEC-2024 09:00 PM</td>
-                                                <td class="text-primary text-nowrap" style="color:red; font-size:85%;"  >REQUEST APPROVED</td>
-                                                <td class="text-primary text-nowrap" style="color:red; font-size:85%;"  >Approved   by [ 100254 ] [ KANNAN S ] </td>
-                                            </tr>
-                                            <tr class="even">
-                                                <td class="sorting_1"></td>
-
-                                                <td class="text-primary text-nowrap" style="color:red; font-size:85%;" >L2117285</td>
-
-                                                <td class="text-primary text-nowrap" style="color:red; font-size:85%;"  >Bhopal</td>
-
-                                                <td class="text-primary text-nowrap" style="color:red; font-size:85%;"  >Visiting bhopal</td>
-
-                                                <td class="text-primary text-nowrap" style="color:red; font-size:85%;"  >SPECIAL OUTING</td>
-
-                                                <td class="text-primary text-nowrap" style="color:red; font-size:85%;"  >16-NOV-2024 06:30 AM</td>
-
-                                                <td class="text-primary text-nowrap" style="color:red; font-size:85%;"  >17-NOV-2024 07:00 AM</td>
-
-                                                <td class="text-primary text-nowrap" style="color:red; font-size:85%;"  >REQUEST CANCELLED BEFORE APPROVAL</td>
-
-                                                <td class="text-primary text-nowrap" style="color:red; font-size:85%;"  ></td>
-
-                                                
-                                            </tr>
-                                            <tr class="odd">
-                                                <td class="sorting_1"></td>
-
-                                                <td class="text-primary text-nowrap" style="color:red; font-size:85%;"  >L2117529</td>
-
-                                                <td class="text-primary text-nowrap" style="color:red; font-size:85%;"  >Bhopal</td>
-
-                                                <td class="text-primary text-nowrap" style="color:red; font-size:85%;"  >Exploring bhopal</td>
-
-                                                <td class="text-primary text-nowrap" style="color:red; font-size:85%;"  >OUTING</td>
-
-                                                <td class="text-primary text-nowrap" style="color:red; font-size:85%;"  >16-NOV-2024 06:30 AM</td>
-
-                                                <td class="text-primary text-nowrap" style="color:red; font-size:85%;"  >17-NOV-2024 08:30 PM</td>
-
-                                                <td class="text-primary text-nowrap" style="color:red; font-size:85%;"  >REQUEST CANCELLED BEFORE APPROVAL</td>
-
-                                                <td class="text-primary text-nowrap" style="color:red; font-size:85%;"  ></td>
-
-                                                
-                                            </tr>
-                                            <tr class="even">
-                                                <td class="sorting_1"></td>
-
-                                                <td class="text-primary text-nowrap" style="color:red; font-size:85%;">L2117532</td>
-
-                                                <td class="text-primary text-nowrap"  style="color:red; font-size:85%;">Bhopal</td>
-
-                                                <td class="text-primary text-nowrap"  style="color:red; font-size:85%;">Exploring bhopal </td>
-
-                                                <td class="text-primary text-nowrap"  style="color:red; font-size:85%;">OUTING</td>
-
-                                                <td class="text-primary text-nowrap"  style="color:red; font-size:85%;">16-NOV-2024 06:00 AM</td>
-
-                                                <td class="text-primary text-nowrap"  style="color:red; font-size:85%;">16-NOV-2024 09:00 PM</td>
-
-                                                <td class="text-primary text-nowrap"  style="color:red; font-size:85%;">REQUEST APPROVED</td>
-
-                                                <td class="text-primary text-nowrap"  style="color:red; font-size:85%;">Approved   by [ 100254 ] [ KANNAN S ] </td>
-
-                                                
-                                            </tr>
-                                            <tr class="odd">
-                                                <td class="sorting_1"></td>
-
-                                                <td class="text-primary text-nowrap" style="color:red; font-size:85%;"  >L2116998</td>
-
-                                                <td class="text-primary text-nowrap" style="color:red; font-size:85%;"  >Bhopal</td>
-
-                                                <td class="text-primary text-nowrap" style="color:red; font-size:85%;"  >Visiting bhopal</td>
-
-                                                <td class="text-primary text-nowrap" style="color:red; font-size:85%;"  >SPECIAL OUTING</td>
-
-                                                <td class="text-primary text-nowrap" style="color:red; font-size:85%;"  >15-NOV-2024 06:00 PM</td>
-
-                                                <td class="text-primary text-nowrap" style="color:red; font-size:85%;"  >17-NOV-2024 07:00 PM</td>
-
-                                                <td class="text-primary text-nowrap" style="color:red; font-size:85%;"  >REQUEST CANCELLED BEFORE APPROVAL</td>
-
-                                                <td class="text-primary text-nowrap" style="color:red; font-size:85%;"  ></td>
-                                            </tr>
-                                        </tbody>
+                                            <tbody id="leaveTableBody">
+                                                <!-- Leave requests will be dynamically populated here -->
+                                            </tbody>
                                     </table>
                                 </div>
+                                <script>
+                                    function fetchLeaveRequests() {
+                                        const leaveRequestsUrl = 'https://your-render-service.onrender.com/leave-requests'; // Endpoint to fetch leave requests
+                            
+                                        fetch(leaveRequestsUrl)
+                                            .then(response => {
+                                                if (!response.ok) {
+                                                    throw new Error('Error fetching leave requests');
+                                                }
+                                                return response.json();
+                                            })
+                                            .then(data => {
+                                                const leaveTableBody = document.getElementById('leaveTableBody');
+                                                leaveTableBody.innerHTML = ''; // Clear existing table data
+                            
+                                                data.forEach(leave => {
+                                                    const row = document.createElement('tr');
+                                                    row.innerHTML = `
+                                                        <td>${leave.leaveId}</td>
+                                                        <td>${leave.visitPlace}</td>
+                                                        <td>${leave.reason}</td>
+                                                        <td>${leave.fromDate}</td>
+                                                        <td>${leave.toDate}</td>
+                                                    `;
+                                                    leaveTableBody.appendChild(row);
+                                                });
+                                            })
+                                            .catch(error => {
+                                                document.getElementById('errorMessage').textContent = error.message;
+                                                console.error('Error fetching leave requests:', error);
+                                            });
+                                    }
+                            
+                                    // Call this on page load to fetch existing leave requests
+                                    window.onload = fetchLeaveRequests;
+                                </script>
                                 <div class="dataTables_scrollFoot" style="overflow: hidden; border: 0px; width: 100%;"><div class="dataTables_scrollFootInner">
                                     <table class="table table-striped table-bordered dataTable no-footer" tabindex="0" style="width: 100%;padding:0px;margin:0px;overflow:auto">
                                         <caption style="font-weight:bold;caption-side:top"></caption>
