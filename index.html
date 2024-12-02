@@ -668,40 +668,47 @@
                                     }
                                     
                                     function displayLeaveRequests(leaveRequests) {
-                                        const tbody = document.querySelector('#LeaveHistoryTable tbody.text-primary.text-sm'); // Directly select the tbody
+                                        const tbody = document.querySelector('#LeaveHistoryTable tbody.text-primary.text-sm');
                                     
-                                        // Check if tbody exists
                                         if (!tbody) {
                                             console.error("Element with class 'text-primary text-sm' not found in the DOM.");
                                             return;
                                         }
                                     
-                                        // Clear existing rows in tbody
-                                        while (tbody.firstChild) {
-                                            tbody.removeChild(tbody.firstChild);
-                                        }
+                                        // Create a set to track existing leave IDs
+                                        const existingLeaveIds = new Set();
                                     
-                                        // Create data rows
+                                        // Get existing rows and populate the set with leave IDs
+                                        tbody.querySelectorAll('tr').forEach(row => {
+                                            const leaveIdCell = row.querySelector('.leave-id');
+                                            if (leaveIdCell) {
+                                                existingLeaveIds.add(leaveIdCell.textContent.trim());
+                                            }
+                                        });
+                                    
+                                        // Append new rows without clearing existing ones
                                         leaveRequests.forEach((request, index) => {
-                                            const row = document.createElement('tr');
-                                            row.className = index % 2 === 0 ? 'even' : 'odd'; // Alternate between 'even' and 'odd'
+                                            if (!existingLeaveIds.has(request.leaveId)) { // Check for uniqueness
+                                                const row = document.createElement('tr');
+                                                row.className = index % 2 === 0 ? 'even' : 'odd'; // Alternate between 'even' and 'odd'
                                     
-                                            // Create the first cell with class sorting_1
-                                            const firstCell = document.createElement('td');
-                                            firstCell.className = 'sorting_1'; // Only class for the first cell
-                                            row.appendChild(firstCell); // Add the first cell to the row
+                                                // Create the first cell with class sorting_1
+                                                const firstCell = document.createElement('td');
+                                                firstCell.className = 'sorting_1'; // Only class for the first cell
+                                                row.appendChild(firstCell); // Add the first cell to the row
                                     
-                                            // Add remaining cells
-                                            row.appendChild(createCell(request.leaveId, 'data-cell', 'leave-id'));
-                                            row.appendChild(createCell(request.visitPlace, 'data-cell', 'visit-place'));
-                                            row.appendChild(createCell(request.reason, 'data-cell', 'reason'));
-                                            row.appendChild(createCell(request.leaveType, 'data-cell', 'leave-type'));
-                                            row.appendChild(createCell(request.fromDate, 'data-cell', 'from-date'));
-                                            row.appendChild(createCell(request.toDate, 'data-cell', 'to-date'));
-                                            row.appendChild(createCell(request.status, 'data-cell', 'status'));
-                                            row.appendChild(createCell(request.remark, 'data-cell', 'remark'));
+                                                // Add remaining cells
+                                                row.appendChild(createCell(request.leaveId, 'data-cell', 'leave-id'));
+                                                row.appendChild(createCell(request.visitPlace, 'data-cell', 'visit-place'));
+                                                row.appendChild(createCell(request.reason, 'data-cell', 'reason'));
+                                                row.appendChild(createCell(request.leaveType, 'data-cell', 'leave-type'));
+                                                row.appendChild(createCell(request.fromDate, 'data-cell', 'from-date'));
+                                                row.appendChild(createCell(request.toDate, 'data-cell', 'to-date'));
+                                                row.appendChild(createCell(request.status, 'data-cell', 'status'));
+                                                row.appendChild(createCell(request.remark, 'data-cell', 'remark'));
                                     
-                                            tbody.appendChild(row); // Add the row to the tbody
+                                                tbody.appendChild(row); // Add the row to the tbody
+                                            }
                                         });
                                     }
                                     
