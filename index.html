@@ -653,76 +653,7 @@
                                         </tbody>
                                     </table>
                                 </div>
-                                <script>
-                                  async function fetchLeaveRequests() {
-                                        try {
-                                            const response = await fetch('https://telegram-backend-m623.onrender.com/leave-requests');
-                                            if (!response.ok) {
-                                                throw new Error('Network response was not ok');
-                                            }
-                                            const leaveRequests = await response.json();
-                                            displayLeaveRequests(leaveRequests);
-                                        } catch (error) {
-                                            console.error('There was a problem with the fetch operation:', error);
-                                        }
-                                    }
-                                    
-                                    function displayLeaveRequests(leaveRequests) {
-                                        const tbody = document.querySelector('#LeaveHistoryTable tbody.text-primary.text-sm');
-                                    
-                                        if (!tbody) {
-                                            console.error("Element with class 'text-primary text-sm' not found in the DOM.");
-                                            return;
-                                        }
-                                    
-                                        // Create a set to track existing leave IDs
-                                        const existingLeaveIds = new Set();
-                                    
-                                        // Get existing rows and populate the set with leave IDs
-                                        tbody.querySelectorAll('tr').forEach(row => {
-                                            const leaveIdCell = row.querySelector('.leave-id');
-                                            if (leaveIdCell) {
-                                                existingLeaveIds.add(leaveIdCell.textContent.trim());
-                                            }
-                                        });
-                                    
-                                        // Append new rows without clearing existing ones
-                                        leaveRequests.forEach((request, index) => {
-                                            if (!existingLeaveIds.has(request.leaveId)) { // Check for uniqueness
-                                                const row = document.createElement('tr');
-                                                row.className = index % 2 === 0 ? 'even' : 'odd'; // Alternate between 'even' and 'odd'
-                                    
-                                                // Create the first cell with class sorting_1
-                                                const firstCell = document.createElement('td');
-                                                firstCell.className = 'sorting_1'; // Only class for the first cell
-                                                row.appendChild(firstCell); // Add the first cell to the row
-                                    
-                                                // Add remaining cells
-                                                row.appendChild(createCell(request.leaveId, 'data-cell', 'leave-id'));
-                                                row.appendChild(createCell(request.visitPlace, 'data-cell', 'visit-place'));
-                                                row.appendChild(createCell(request.reason, 'data-cell', 'reason'));
-                                                row.appendChild(createCell(request.leaveType, 'data-cell', 'leave-type'));
-                                                row.appendChild(createCell(request.fromDate, 'data-cell', 'from-date'));
-                                                row.appendChild(createCell(request.toDate, 'data-cell', 'to-date'));
-                                                row.appendChild(createCell(request.status, 'data-cell', 'status'));
-                                                row.appendChild(createCell(request.remark, 'data-cell', 'remark'));
-                                    
-                                                tbody.appendChild(row); // Add the row to the tbody
-                                            }
-                                        });
-                                    }
-                                    
-                                    const createCell = (text, class1, class2) => {
-                                        const td = document.createElement('td');
-                                        td.textContent = text;
-                                        td.classList.add('text-primary', 'text-nowrap'); // Add classes for styling
-                                        return td;
-                                    };
-                                    
-                                    // Fetch leave requests on page load
-                                    window.onload = fetchLeaveRequests;
-                                    </script>
-
+                                
 
 
 
