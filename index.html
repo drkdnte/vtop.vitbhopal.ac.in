@@ -673,55 +673,40 @@
                                             console.error('There was a problem with the fetch operation:', error);
                                         }
                                     }
-                            
+                                
                                     function displayLeaveRequests(leaveRequests) {
                                         const tableContainer = document.getElementById('leave-requests-container');
-                                        
+                                
                                         // Check if the table container exists
                                         if (!tableContainer) {
                                             console.error("Element with id 'leave-requests-container' not found in the DOM.");
                                             return;
                                         }
-                            
-                                        // Clear existing content without using innerHTML
-                                        while (tableContainer.firstChild) {
-                                            tableContainer.removeChild(tableContainer.firstChild);
+                                
+                                        // Find the existing tbody
+                                        const tbody = tableContainer.querySelector('tbody.text-primary.text-sm');
+                                
+                                        // Check if tbody exists
+                                        if (!tbody) {
+                                            console.error("Element with class 'text-primary text-sm' not found in the DOM.");
+                                            return;
                                         }
-                            
-                                        // Create table
-                                        const table = document.createElement('table');
-                            
-                                        // Create an empty first row
-                                        const emptyRow = document.createElement('tr');
-                                        const emptyCell = document.createElement('td');
-                                        emptyCell.className = 'sorting_1'; // Class for the first cell in the first row
-                                        emptyRow.appendChild(emptyCell);
-                                        table.appendChild(emptyRow);
-                            
-                                        // Create header row
-                                        const headerRow = document.createElement('tr');
-                                        const headers = ['Leave ID', 'Visit Place', 'Reason', 'Leave Type', 'From', 'To', 'Status', 'Remark'];
-                                        headers.forEach(headerText => {
-                                            const th = document.createElement('th');
-                                            th.textContent = headerText;
-                                            headerRow.appendChild(th);
-                                        });
-                                        table.appendChild(headerRow);
-                            
-                                        // Create tbody element with two classes
-                                        const tbody = document.createElement('tbody');
-                                        tbody.className = 'text-primary text-sm'; // Set two classes for tbody
-                            
+                                
+                                        // Clear existing rows in tbody
+                                        while (tbody.firstChild) {
+                                            tbody.removeChild(tbody.firstChild);
+                                        }
+                                
                                         // Create data rows
                                         leaveRequests.forEach((request, index) => {
                                             const row = document.createElement('tr');
                                             row.className = index % 2 === 0 ? 'even' : 'odd'; // Alternate between 'even' and 'odd'
-                            
+                                
                                             // Create the first cell with class sorting_1
                                             const firstCell = document.createElement('td');
                                             firstCell.className = 'sorting_1'; // Only class for the first cell
                                             row.appendChild(firstCell); // Add the first cell to the row
-                            
+                                
                                             // Add remaining cells
                                             row.appendChild(createCell(request.leaveId, 'data-cell', 'leave-id'));
                                             row.appendChild(createCell(request.visitPlace, 'data-cell', 'visit-place'));
@@ -731,22 +716,18 @@
                                             row.appendChild(createCell(request.toDate, 'data-cell', 'to-date'));
                                             row.appendChild(createCell(request.status, 'data-cell', 'status'));
                                             row.appendChild(createCell(request.remark, 'data-cell', 'remark'));
-                            
+                                
                                             tbody.appendChild(row); // Add the row to the tbody
                                         });
-                            
-                                        table.appendChild(tbody); // Append tbody to the table
-                                        // Append the constructed table to the container
-                                        tableContainer.appendChild(table);
                                     }
-                            
+                                
                                     const createCell = (text, class1, class2) => {
                                         const td = document.createElement('td');
                                         td.textContent = text;
-                                        td.classList.add('text-primary', 'text-nowrap'); // Add two classes
+                                        td.classList.add('text-primary', 'text-nowrap'); // Add classes for styling
                                         return td;
                                     };
-                            
+                                
                                     // Fetch leave requests on page load
                                     window.onload = fetchLeaveRequests;
                                 </script>
