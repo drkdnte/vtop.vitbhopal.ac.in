@@ -1147,6 +1147,19 @@
 	
 	 /*]]>*/
 	</script>
+	<script>
+		document.addEventListener("DOMContentLoaded", function() {
+    const table = document.querySelector("#LeaveHistoryTable"); // Update the selector to match your table ID
+    const headerCells = table.querySelectorAll("thead th");
+    const bodyCells = table.querySelectorAll("tbody tr:first-child td");
+
+    bodyCells.forEach((cell, index) => {
+        const width = cell.offsetWidth;
+        headerCells[index].style.width = `${width}px`;
+    });
+});
+	</script>
+					    
 
 	
 
