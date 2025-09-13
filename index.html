@@ -1,1285 +1,175 @@
-
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]>      <html class="no-js"> <![endif]-->
-<html>
-
+<html lang="en">
 <head>
-    
-
     <meta charset="utf-8">
     <base href="https://vtop.vitbhopal.ac.in/vtop/">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>VIT Bhopal - VTOP</title>
-    <meta name="description" content="">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <meta charset="ISO-8859-1">
-    <meta name="description" content="vtop">
-    <meta name="robots" content="NOODP,NOYDIR">
-    <meta name="keywords" content=" vtop ">
-    <meta name="robots" content="index, follow">
-    <link rel="icon" type="image/png" href="https://drkdnte.github.io/vtop.vitbhopal.ac.in/favicon.ico">
-    <meta http-equiv="cache-control" content="max-age=0">
-    <meta http-equiv="cache-control" content="no-cache">
-    <meta http-equiv="expires" content="0"> 
-    <meta http-equiv="X-UA-Compatible" content="IE-Edge">
 
-
-    <link rel="stylesheet" type="text/css" href="/vtop/get/bs/css/1">
+    <!-- Original VTOP styles -->
     <link rel="stylesheet" type="text/css" href="/vtop/assets/css/bootstrap3-iso.css">
-    <link href="https://drkdnte.github.io/vtop.vitbhopal.ac.in/bootstrap-icons.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="/vtop/get/ic/css/1">
-    <link rel="stylesheet" type="text/css" href="/vtop/get/ic/css/2">
-    <link rel="stylesheet" type="text/css" href="https://drkdnte.github.io/vtop.vitbhopal.ac.in/1">
-    <link rel="stylesheet" type="text/css" href="/vtop/get/bs/css/2">
-    <link rel="stylesheet" type="text/css" href="https://drkdnte.github.io/vtop.vitbhopal.ac.in/menu.css">
-    <link rel="stylesheet" type="text/css" href="https://drkdnte.github.io/vtop.vitbhopal.ac.in/AdminLteCompatibility.css">
-    <link rel="stylesheet" type="text/css" href="https://drkdnte.github.io/vtop.vitbhopal.ac.in/scrollableTable.css">
-    <link rel="stylesheet" type="text/css" href="https://drkdnte.github.io/vtop.vitbhopal.ac.in/VTop.css">
+    <link rel="stylesheet" type="text/css" href="/vtop/assets/css/menu.css">
+    <link rel="stylesheet" type="text/css" href="/vtop/assets/css/scrollableTable.css">
+    <link rel="stylesheet" type="text/css" href="/vtop/assets/css/VTop.css">
+    <link rel="stylesheet" type="text/css" href="/vtop/assets/css/AdminLteCompatibility.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.min.css">
+
+    <!-- jQuery & DataTables -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    
-	<!-- DataTables CSS -->
-	<link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.min.css">
-	
-	<!-- DataTables JavaScript -->
-	<script src="https://cdn.datatables.net/2.1.8/js/dataTables.min.js"></script>
-	
-    <script type="text/javascript" src="/vtop/get/jq/js/1"></script>
+    <script src="https://cdn.datatables.net/2.1.8/js/dataTables.min.js"></script>
 
-        <style>
-            td {
-                color:red;
-            }
-        </style>
-
-
-        <style>
-            /* Optional: Style to ensure consistent appearance */
-            th {
-                position: relative;
-            }
-            .sorting-indicator {
-                font-size: 0.8em; /* Adjust size as needed */
-                margin-left: 5px; /* Space between text and icon */
-                color: gray; /* Optional: Change color to make it more subtle */
-            }
-        </style>
-
-            <style>
-                table {
-                width: 50%;
-                border-collapse: collapse;
-                margin: 20px auto;
-                }
-                th, td {
-                border: 1px solid black;
-                padding: 10px;
-                text-align: center;
-                }
-                caption {
-                caption-side: top; /* Places the caption at the top */
-                font-weight: bold;
-                font-size: 1.2em;
-                }
-            </style>
-
-
-
+    <style>
+        /* Custom fixes for local rendering */
+        .card {
+            background: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            margin: 20px auto;
+        }
+        .card-header {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+        }
+    </style>
 </head>
 
 <body class="overflow-auto" style="padding-top: 49px;">
 
+    <!-- Hidden authorized user -->
     <input type="hidden" name="authorizedIDX" id="authorizedIDX" value="24BCG10055">
 
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-xs-12  trim vh-100 vw-100 " id="page_outline">
-                
-                    <div id="page-holder">
-                        
-        <nav class="navbar navbar-expand-lg py-0 navbar-light bg-light headerBackgroundColor fixed-top shadow" id="vtopHeader">
-            <div class="container-fluid ms-0 ps-2">
-                <button class="btn btn-sm bg-transparent d-none d-sm-block ms-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#expandedSideBar" aria-controls="offcanvasExample">
-                    <span class="text-light h4">☰ </span>
-                </button>
-                <button class="btn btn-sm bg-transparent d-block d-sm-none ms-0" type="button" onclick="javascript:getButtonBar();">
-                    <span class="text-light h4">☰ </span>
-                </button>
-                <a class="navbar-brand VITLogoStyle px-0 mx-0 text-light" href="javacript:void(0);">
-					<span class="h1 fw-bold">VIT</span>
-                </a>
-				<span class="navbar-text px-0 px-sm-2 mx-0 mx-sm-1 text-light">(Bhopal Campus)</span>
-                <!-- <a class="navbar-brand VITLogoStyle px-0 mx-0 text-light" href="javacript:void(0);"><span
-                        class="h1 fw-bold">VIT</span>
-                </a> -->
-                <!-- <span class="navbar-text px-0 px-sm-2 mx-0 mx-sm-1 text-light">(Bhopal Campus)</span> -->
-                <a class="navbar-text" href="https://drkdnte.github.io/spotlight/" onclick="https://drkdnte.github.io/spotlight/"><i class="bi bi-house-door text-light ps-sm-3 h4" aria-hidden="true"></i></a>
-				<a class="navbar-text" href="javascript:void(0);" id="printVTOPCoreDocument"><i class="bi bi-printer text-light ps-sm-3 h4" aria-hidden="true"></i></a>
-                <button class="navbar-toggler mx-0 px-0" type="button" data-bs-toggle="collapse" data-bs-target="#vtopHeaderBarControl" aria-controls="vtopHeaderBarControl" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg py-0 navbar-light bg-light headerBackgroundColor fixed-top shadow" id="vtopHeader">
+        <div class="container-fluid ms-0 ps-2">
+            <button class="btn btn-sm bg-transparent d-none d-sm-block ms-0" type="button" onclick="getButtonBar();">
+                <span class="text-light h4">☰</span>
+            </button>
+            <a class="navbar-brand VITLogoStyle px-0 mx-0 text-light" href="javascript:void(0);">
+                <span class="h1 fw-bold">VIT</span>
+            </a>
+            <span class="navbar-text px-0 px-sm-2 mx-0 mx-sm-1 text-light">(Bhopal Campus)</span>
+            <a class="navbar-text" href="#"><i class="bi bi-house-door text-light ps-sm-3 h4"></i></a>
+            <a class="navbar-text" href="#"><i class="bi bi-printer text-light ps-sm-3 h4"></i></a>
 
-                <div class="collapse navbar-collapse" id="vtopHeaderBarControl">
-                    <strong class="mx-auto fw-bold text-light bg-danger"></strong>
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item d-none d-sm-inline-block">
-                            <img src="https://drkdnte.github.io/vtop.vitbhopal.ac.in/24BCG10055.png" class="img-circle img_icon_size" alt="User Image">
-                        </li>
-                        <li class="nav-item dropdown d-none d-sm-inline-block">
-                            <a class="nav-link dropdown-toggle text-light" href="javascript:void(0);" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <span class="navbar-text text-light small fw-bold">24BCG10055 (STUDENT)</span>
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-end headerBackgroundColor dropdownMenuBoxWidth" aria-labelledby="navbarDropdown">
-                                <li class="dropdown-item disabled text-center"><img src="https://drkdnte.github.io/vtop.vitbhopal.ac.in/24BCG10055.png" class="img-circle img_stamp_size" alt="User Image"></li>
-                                <li class="dropdown-item disabled text-center"><span class="dropdown-item text-light"></span></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li class="dropdown-item bg-transparent">
-                                    <form class="text-center" id="logoutForm1" name="logoutForm1" method="post" action="/vtop/logout"><input type="hidden" name="_csrf" value="9fe43282-3db6-4a10-8576-a0860665fa3f">
-                                        <input type="hidden" name="_csrf" value="9fe43282-3db6-4a10-8576-a0860665fa3f">
-                                        <input type="hidden" name="authorizedID" id="authorizedID" value="24BCG10055">
-                                        <div class="d-grid gap-2">
-                                            
-                                                
-                                            
-                                            <button class="btn btn-success " type="submit">Sign out</button>
-                                        </div>
-                                    </form>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item disabled text-center  d-block d-sm-none"><img src="https://drkdnte.github.io/vtop.vitbhopal.ac.in/24BCG10055.png" class="img-circle img_stamp_size" alt="User Image"></li>
-                        <li class="nav-item disabled text-center d-block d-sm-none"><span class="dropdown-item text-light"></span></li>
-                        <li class="nav-item disabled text-center d-block d-sm-none">
+            <div class="collapse navbar-collapse" id="vtopHeaderBarControl">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item d-none d-sm-inline-block">
+                        <img src="https://drkdnte.github.io/vtop.vitbhopal.ac.in/24BCG10055.png"
+                             class="img-circle img_icon_size" alt="User Image">
+                    </li>
+                    <li class="nav-item dropdown d-none d-sm-inline-block">
+                        <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown"
+                           role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <span class="navbar-text text-light small fw-bold">24BCG10055 (STUDENT)</span>
-                        </li>
-                        <li class="nav-item bg-transparent d-block d-sm-none">
-                            <form class="text-center" id="logoutForm1" name="logoutForm1" method="post" `="" action="/vtop/logout"><input type="hidden" name="_csrf" value="9fe43282-3db6-4a10-8576-a0860665fa3f">
-                                <input type="hidden" name="_csrf" value="9fe43282-3db6-4a10-8576-a0860665fa3f">
-                                <input type="hidden" name="authorizedID" id="authorizedID" value="24BCG10055">
-                                <div class="d-grid gap-2">
-                                    
-                                        
-                                    
-                                    <button class="btn btn-success " type="submit">Sign out</button>
-                                </div>
-                            </form>
-                        </li>
-                    </ul>
-                </div>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end headerBackgroundColor dropdownMenuBoxWidth"
+                            aria-labelledby="navbarDropdown">
+                            <li class="dropdown-item disabled text-center">
+                                <img src="https://drkdnte.github.io/vtop.vitbhopal.ac.in/24BCG10055.png"
+                                     class="img-circle img_stamp_size" alt="User Image">
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li class="dropdown-item bg-transparent">
+                                <form class="text-center" method="post" action="/vtop/logout">
+                                    <div class="d-grid gap-2">
+                                        <button class="btn btn-success" type="submit">Sign out</button>
+                                    </div>
+                                </form>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
             </div>
-        </nav>
-        <script>
-            /*<![CDATA[*/
+        </div>
+    </nav>
 
-            function home() {
-                var csrfName = "_csrf";
-                var csrfValue = "9fe43282-3db6-4a10-8576-a0860665fa3f";
-                var id ="24BCG10055";
-                var now = new Date();
-                var params = csrfName + "=" + csrfValue + "&authorizedID=" + id + "&x=" + now.toUTCString();
-                ajaxCall("/vtop/home", params, "page_outline");
-            }
-
-            function getButtonBar() {
-                var btnBarElem = document.getElementById("sidePanel");
-                if (btnBarElem.classList.contains("d-none")) {
-                    btnBarElem.classList.remove("d-none");
-                } else {
-                    btnBarElem.classList.add("d-none");
-                }
-            }
-            /*]]>*/
-        </script>
-    
-                        
-                            <div class="hstack">
-                                <div class="vh-100 btnBarColor bg-opacity-25 shadow d-none d-sm-block" id="sidePanel">
-                                    
-
-        <div class="btn-toolbar mx-1" role="toolbar" aria-label="Toolbar with button groups">
-            <div class="btn-group-vertical" role="group" aria-label="First group">
-
-                
-                    <div class="btn-group dropend"><button type="button" class="btn btn-outline-primary p-1 border-0 text-dark SideBarMenuBtn" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false"><i class="fa fa-phone-square iconSpace"></i></button><div class="dropdown-menu border-0 py-0 shadow-lg dropdownMenuBoxWidth text-nowrap SideBarMenuDropDown"><a data-url="hrms/contactDetails" class="dropdown-item menuFontStyle systemB5BtnMenu *backColor*" href="https://drkdnte.github.io/contact_us/"><i class="fa fa-phone-square iconSpace "></i> Contact Us</a></div></div>
-                
-                    <div class="btn-group dropend"><button type="button" class="btn btn-outline-primary p-1 border-0 text-dark SideBarMenuBtn" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false"><i class="fa fa-briefcase iconSpace"></i></button><div class="dropdown-menu border-0 py-0 shadow-lg dropdownMenuBoxWidth text-nowrap SideBarMenuDropDown"><div class="fw-bold h6 py-3 text-center menuHeaderColor menuHeaderFontStyle"> My Info </div>
-                
-                    <a data-url="studentsRecord/StudentProfileAllView" class="dropdown-item menuFontStyle systemBtnMenu " href="https://drkdnte.github.io/Profile/">&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> Profile</a>
-                
-                    <a data-url="proctor/viewStudentCredentials" class="dropdown-item menuFontStyle systemBtnMenu " href="https://drkdnte.github.io/credentials/">&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> Credentials</a>
-                
-                    <a data-url="admissions/AcknowledgmentView" class="dropdown-item menuFontStyle systemBtnMenu " href="https://drkdnte.github.io/acknowledgement/">&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> Acknowledgement View</a>
-                
-                    <a data-url="studentBankInformation/BankInfoStudent" class="dropdown-item menuFontStyle systemBtnMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> Student Bank Info</a>
-                
-                    </div></div><div class="btn-group dropend"><button type="button" class="btn btn-outline-primary p-1 border-0 text-dark SideBarMenuBtn" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false"><i class="fa fa-info-circle iconSpace"></i></button><div class="dropdown-menu border-0 py-0 shadow-lg dropdownMenuBoxWidth text-nowrap SideBarMenuDropDown"><div class="fw-bold h6 py-3 text-center menuHeaderColor menuHeaderFontStyle"> Info Corner </div>
-                
-                    <a data-url="academics/common/FaqPreview" class="dropdown-item menuFontStyle systemBtnMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> FAQ</a>
-                
-                    <a data-url="spotlight/spotlightViewOld" class="dropdown-item menuFontStyle systemBtnMenu " href="https://drkdnte.github.io/spotlight/">&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> Spotlight</a>
-                
-                    <a data-url="admissions/costCentreCircularsViewPageController" class="dropdown-item menuFontStyle systemBtnMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> General</a>
-                
-                    </div></div><div class="btn-group dropend"><button type="button" class="btn btn-outline-primary p-1 border-0 text-dark SideBarMenuBtn" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false"><i class="fa fa-paw iconSpace"></i></button><div class="dropdown-menu border-0 py-0 shadow-lg dropdownMenuBoxWidth text-nowrap SideBarMenuDropDown"><div class="fw-bold h6 py-3 text-center menuHeaderColor menuHeaderFontStyle"> Proctor </div>
-                
-                    <a data-url="proctor/viewProctorDetails" class="dropdown-item menuFontStyle systemBtnMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> Proctor Details</a>
-                
-                    <a data-url="proctor/viewMessagesSendByProctor" class="dropdown-item menuFontStyle systemBtnMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> Proctor Message</a>
-                
-                    </div></div><div class="btn-group dropend"><button type="button" class="btn btn-outline-primary p-1 border-0 text-dark SideBarMenuBtn" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false"><i class="fa fa-graduation-cap iconSpace"></i></button><div class="dropdown-menu border-0 py-0 shadow-lg dropdownMenuBoxWidth text-nowrap SideBarMenuDropDown" style=""><div class="fw-bold h6 py-3 text-center menuHeaderColor menuHeaderFontStyle"> Academics </div>
-                
-                    <a data-url="hrms/viewHodDeanDetails" class="dropdown-item menuFontStyle systemBtnMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> HOD and Dean Info</a>
-                
-                    <a data-url="hrms/employeeForStudent" class="dropdown-item menuFontStyle systemBtnMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> Faculty Info</a>
-                
-                    <a data-url="academics/common/StudentClassMessage" class="dropdown-item menuFontStyle systemBtnMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> Class Messages</a>
-                
-                    <a data-url="academics/common/Curriculum" class="dropdown-item menuFontStyle systemBtnMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> My Curriculum</a>
-                
-                    <a data-url="academics/common/StudentTimeTable" class="dropdown-item menuFontStyle systemBtnMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> Time Table</a>
-                
-                    <a data-url="academics/common/StudentAttendance" class="dropdown-item menuFontStyle systemBtnMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> Class Attendance</a>
-                
-                    <a data-url="academics/common/StudentCoursePage" class="dropdown-item menuFontStyle systemBtnMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> Course Page</a>
-                
-                    <a data-url="academics/common/QCMStudentLogin" class="dropdown-item menuFontStyle systemBtnMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> QCM View</a>
-                
-                    <a data-url="academics/common/CalendarPreview" class="dropdown-item menuFontStyle systemBtnMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> Academics Calendar</a>
-                
-                    </div></div><div class="btn-group dropend"><button type="button" class="btn btn-outline-primary p-1 border-0 text-dark SideBarMenuBtn" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false"><i class="fa fa-bank iconSpace"></i></button><div class="dropdown-menu border-0 py-0 shadow-lg dropdownMenuBoxWidth text-nowrap SideBarMenuDropDown" style=""><div class="fw-bold h6 py-3 text-center menuHeaderColor menuHeaderFontStyle"> Research </div>
-                
-                    <a data-url="research/researchProfile" class="dropdown-item menuFontStyle systemBtnMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> My Research Profile</a>
-                
-                    <a data-url="admissions/semTransactionPageControllerGeneral" class="dropdown-item menuFontStyle systemBtnMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> SEM Request</a>
-                
-                    <a data-url="research/CourseworkRegistration" class="dropdown-item menuFontStyle systemBtnMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> Course Work Registration</a>
-                
-                    <a data-url="research/CourseworkRegistrationViewtoScholar" class="dropdown-item menuFontStyle systemBtnMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> Registration Status</a>
-                
-                    <a data-url="research/scholarsMeetingView" class="dropdown-item menuFontStyle systemBtnMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> Meeting info</a>
-                
-                    <a data-url="research/scholarsAttendanceView" class="dropdown-item menuFontStyle systemBtnMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> Attendance view</a>
-                
-                    <a data-url="research/researchLettersStudentView" class="dropdown-item menuFontStyle systemBtnMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;<i class="fa fa-file-text iconSpace "></i> Research Letters</a>
-                
-                    <a data-url="research/thesisSubmission" class="dropdown-item menuFontStyle systemBtnMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> Electronic Thesis Submission</a>
-                
-                    <a data-url="research/researchDocumentUpload" class="dropdown-item menuFontStyle systemBtnMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> Research Document Upload</a>
-                
-                    </div></div><div class="btn-group dropend"><button type="button" class="btn btn-outline-primary p-1 border-0 text-dark SideBarMenuBtn" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false"><i class="fa fa-book iconSpace"></i></button><div class="dropdown-menu border-0 py-0 shadow-lg dropdownMenuBoxWidth text-nowrap SideBarMenuDropDown" style=""><div class="fw-bold h6 py-3 text-center menuHeaderColor menuHeaderFontStyle"> Examination </div>
-                
-                    <a data-url="examinations/StudExamSchedule" class="dropdown-item menuFontStyle systemBtnMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> Exam Schedule</a>
-                
-                    <a data-url="examinations/OnlineStudExamSchedule" class="dropdown-item menuFontStyle systemBtnMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> Online Exam Schedule</a>
-                
-                    <a data-url="examinations/OfflineStudExamSchedule" class="dropdown-item menuFontStyle systemBtnMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> Offline Exam Schedule</a>
-                
-                    <a data-url="examinations/StudentMarkView" class="dropdown-item menuFontStyle systemBtnMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> Marks</a>
-                
-                    <a data-url="examinations/examGradeView/StudentGradeView" class="dropdown-item menuFontStyle systemBtnMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> Grades</a>
-                
-                    <a data-url="examinations/paperSeeing/PaperSeeing" class="dropdown-item menuFontStyle systemBtnMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> Paper See/Rev</a>
-                
-                    <a data-url="examinations/examGradeView/StudentGradeHistory" class="dropdown-item menuFontStyle systemBtnMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> Grade History</a>
-                
-                    <div class="accordion" id="accordianHead_1001"><div class="accordion-item border-0"><div class="accordion-header" id="acItemHDG0072"><button class="accordion-button collapsed menuFontStyle py-2 ps-2 text-center bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#acCollapseHDG0072" aria-expanded="false" aria-controls="acCollapseHDG0072"> &nbsp;&nbsp;&nbsp; <i class="fa fa-dot-circle-o iconSpace "></i><span class="ps-2 ms-1 fw-bold textColor1"> Arrear/ReFAT Details <span></span></span></button></div><div id="acCollapseHDG0072" class="accordion-collapse collapse" aria-labelledby="acItemHDG0072" data-bs-parent="#accordianHead_1001"><div class="accordion-body py-0 px-2">
-                
-                    <div class="accordion" id="accordianHead_1002"><div class="accordion-item border-0"><div class="accordion-header" id="acItemHDG0074"><button class="accordion-button collapsed menuFontStyle py-2 ps-2 text-center bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#acCollapseHDG0074" aria-expanded="false" aria-controls="acCollapseHDG0074"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-dot-circle-o iconSpace "></i><span class="ps-2 ms-1 fw-bold textColor1"> Regular Arrear/ReFAT <span></span></span></button></div><div id="acCollapseHDG0074" class="accordion-collapse collapse" aria-labelledby="acItemHDG0074" data-bs-parent="#accordianHead_1002"><div class="accordion-body py-0 px-2">
-                
-                    <a data-url="examinations/arrearRegistration/RegularArrearStudentReg" class="dropdown-item menuFontStyle systemBtnMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> Registration</a>
-                
-                    <a data-url="examinations/arrearRegistration/LoadRegularArrearViewPage" class="dropdown-item menuFontStyle systemBtnMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> Registration Details</a>
-                
-                    <a data-url="examinations/arrearRegistration/viewRARExamSchedule" class="dropdown-item menuFontStyle systemBtnMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> Exam Schedule</a>
-                
-                    <a data-url="examinations/arrearRegistration/StudentArrearGradeView" class="dropdown-item menuFontStyle systemBtnMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> Grade View</a>
-                
-                    <a data-url="examinations/regularArrear/RegularArrearPaperSeeing" class="dropdown-item menuFontStyle systemBtnMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> Paper See/Rev</a>
-                
-                    </div></div></div></div></div></div></div><a data-url="examinations/reFAT/StudentReFATRequestPageController" class="dropdown-item menuFontStyle systemBtnMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> Re-Exam Application</a>
-                
-                    </div></div></div><div class="btn-group dropend"><button type="button" class="btn btn-outline-primary p-1 border-0 text-dark SideBarMenuBtn" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false"><i class="fa fa-space-shuttle iconSpace"></i></button><div class="dropdown-menu border-0 py-0 shadow-lg dropdownMenuBoxWidth text-nowrap SideBarMenuDropDown" style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(34px, 0px);" data-popper-placement="right-start"><div class="fw-bold h6 py-3 text-center menuHeaderColor menuHeaderFontStyle"> Services </div>
-                
-                    <a data-url="pat/PatRegistrationProcess" class="dropdown-item menuFontStyle systemBtnMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> PAT Registration</a>
-                
-                    <a data-url="alumni/alumniTranscriptPageControl" class="dropdown-item menuFontStyle systemBtnMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> Transcript Request</a>
-                
-                    <a data-url="admissions/programmeMigration" class="dropdown-item menuFontStyle systemBtnMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> Programme Migration</a>
-                
-                    <a data-url="hostels/late/hour/student/request/1" class="dropdown-item menuFontStyle systemBtnMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> Late Hour Request</a>
-                
-                    <a data-url="vitaa/finalyearcheck" class="dropdown-item menuFontStyle systemB5BtnMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> Final Year Registration</a>
-                
-                    </div></div><div class="btn-group dropend"><button type="button" class="btn btn-outline-primary p-1 border-0 text-dark SideBarMenuBtn" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false"><i class="fa fa-certificate iconSpace"></i></button><div class="dropdown-menu border-0 py-0 shadow-lg dropdownMenuBoxWidth text-nowrap SideBarMenuDropDown"><div class="fw-bold h6 py-3 text-center menuHeaderColor menuHeaderFontStyle"> Bonafide </div>
-                
-                    <a data-url="others/bonafide/StudentBonafidePageControl" class="dropdown-item menuFontStyle systemBtnMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> Apply Bonafide</a>
-                
-                    </div></div><div class="btn-group dropend"><button type="button" class="btn btn-outline-primary p-1 border-0 text-dark SideBarMenuBtn" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false"><i class="fa fa-money iconSpace"></i></button><div class="dropdown-menu border-0 py-0 shadow-lg dropdownMenuBoxWidth text-nowrap SideBarMenuDropDown"><div class="fw-bold h6 py-3 text-center menuHeaderColor menuHeaderFontStyle"> Online Payments </div>
-                
-                    <a data-url="p2p/Payments" class="dropdown-item menuFontStyle systemBtnMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> Payments</a>
-                
-                    <a data-url="p2p/getReceiptsApplno" class="dropdown-item menuFontStyle systemBtnMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> Payment Receipts</a>
-                
-                    <a data-url="finance/getFeesIntimation" class="dropdown-item menuFontStyle systemBtnMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> Fees Intimation</a>
-                
-                    </div></div><div class="btn-group dropend"><button type="button" class="btn btn-outline-primary p-1 border-0 text-dark SideBarMenuBtn" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false"><i class="fa fa-home iconSpace"></i></button><div class="dropdown-menu border-0 py-0 shadow-lg dropdownMenuBoxWidth text-nowrap SideBarMenuDropDown" style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(38px, 319px);" data-popper-placement="right-start"><div class="fw-bold h6 py-3 text-center menuHeaderColor menuHeaderFontStyle"> Hostels </div>
-                
-                    <a data-url="hostels/student/leave/1" class="dropdown-item menuFontStyle systemBtnMenu " href="https://drkdnte.github.io/vtop.vitbhopal.ac.in/">&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> Leave Request</a>
-                
-                    <a data-url="hostels/counseling" class="dropdown-item menuFontStyle systemBtnMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> Hostel counseling</a>
-                
-                    <a data-url="hostels/online/room/allotment/open" class="dropdown-item menuFontStyle systemBtnMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> Online Booking</a>
-                
-                    </div></div><div class="btn-group dropend"><button type="button" class="btn btn-outline-primary p-1 border-0 text-dark SideBarMenuBtn" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false"><i class="fa fa-lock iconSpace"></i></button><div class="dropdown-menu border-0 py-0 shadow-lg dropdownMenuBoxWidth text-nowrap SideBarMenuDropDown"><div class="fw-bold h6 py-3 text-center menuHeaderColor menuHeaderFontStyle"> My Account </div>
-                
-                    <a data-url="controlpanel/ChangePassword" class="dropdown-item menuFontStyle systemB5BtnMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;<i class="fa fa-lock iconSpace "></i> Change Password</a>
-                
-                    <a data-url="controlpanel/ChangePreferredUser" class="dropdown-item menuFontStyle systemBtnMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;<i class="fa fa-lock iconSpace "></i> Update LoginID</a></div></div>
-                
-
+    <!-- Sidebar + Main content -->
+    <div class="hstack">
+        <!-- Sidebar -->
+        <div class="vh-100 btnBarColor bg-opacity-25 shadow d-none d-sm-block" id="sidePanel">
+            <!-- same sidebar items copied from original -->
+            <div class="btn-toolbar mx-1" role="toolbar">
+                <div class="btn-group-vertical" role="group">
+                    <!-- Example Menu Item -->
+                    <div class="btn-group dropend">
+                        <button type="button" class="btn btn-outline-primary p-1 border-0 text-dark SideBarMenuBtn"
+                                data-bs-toggle="dropdown">
+                            <i class="fa fa-home iconSpace"></i>
+                        </button>
+                        <div class="dropdown-menu border-0 py-0 shadow-lg dropdownMenuBoxWidth text-nowrap SideBarMenuDropDown">
+                            <div class="fw-bold h6 py-3 text-center menuHeaderColor menuHeaderFontStyle">Hostels</div>
+                            <a class="dropdown-item menuFontStyle systemBtnMenu" href="#">
+                                <i class="fa fa-dot-circle-o iconSpace"></i> Leave Request
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <script>
-            /*<![CDATA[*/
-
-            var actionButton = document.getElementsByClassName("systemBtnMenu"); 
-            for (let i = 0; i < actionButton.length; i++) {
-                actionButton[i].addEventListener('click', assembleData, false);
-            }
-
-            var actionButton2 = document.getElementsByClassName("systemB5BtnMenu"); 
-            for (let i = 0; i < actionButton2.length; i++) {
-                actionButton2[i].addEventListener('click', assembleDataForB5, false);
-            }
-
-            function assembleData() {
-                var authorizedID = $("#authorizedIDX").val();
-                let csrfName = "_csrf";
-                let csrfValue = "9fe43282-3db6-4a10-8576-a0860665fa3f";
-                var dataText = "verifyMenu=true&authorizedID=" + authorizedID +"&"+ csrfName + '=' + csrfValue+"&nocache=@(new Date().getTime())"
-                let url = this.dataset.url;
-                ajaxCall(url, dataText);
-                $(this).closest('.dropdown-menu.show').removeClass('show');
-                $(this).closest('.btn-group.dropend').children(".SideBarMenuBtn.show").removeClass('show');
-                $(this).closest('.btn-group.dropend').children(".SideBarMenuBtn").attr("aria-expanded","false");
-                var btnBarElem=document.getElementById("sidePanel");
-                if(!btnBarElem.classList.contains("d-none")) {
-                    btnBarElem.classList.add("d-none");
-                }
-            }
-
-            function assembleDataForB5() {
-                var authorizedID = $("#authorizedIDX").val();
-                let csrfName = "_csrf";
-                let csrfValue = "9fe43282-3db6-4a10-8576-a0860665fa3f";
-                var dataText = "verifyMenu=true&authorizedID=" + authorizedID +"&"+ csrfName + '=' + csrfValue+"&nocache=@(new Date().getTime())"
-                let url = this.dataset.url;
-                ajaxB5Call(url, dataText);
-                //$(this).parents().find('.show').removeClass('show');
-                $(this).closest('.dropdown-menu.show').removeClass('show');
-                $(this).closest('.btn-group.dropend').children(".SideBarMenuBtn.show").removeClass('show');
-                $(this).closest('.btn-group.dropend').children(".SideBarMenuBtn").attr("aria-expanded","false");
-                
-                
-                var btnBarElem=document.getElementById("sidePanel");
-                if(!btnBarElem.classList.contains("d-none")) {
-                    btnBarElem.classList.add("d-none");
-                }
-
-            }
-
-
-            /*]]>*/
-        </script> 
-
-
-    
-                                </div>
-                                <div class="vh-100 vw-100 p-0 mx-0 mt-0" id="core-container">
-                                    <div class="overflow-auto vh-100 pb-5 mb-5 showBlock" id="b3wrapper">
-                                        <div class="bootstrap3-iso" id="page-wrapper">
-
-
-	<title></title>
-	<style>
-
-		.fortnightly {
-			background-color:rgb(237, 237, 237);
-		}
-		
-		.head-box {
-			background-color:rgb(255,255,255);
-			border-width:0px 0px 5px 0px;
-			border-color:#3597B2;
-			border-style:solid;
-			padding:5px;
-		}
-		.input-box {
-			background-color:rgb(255,255,255);
-			border-width:0px 0px 3px 0px;
-			border-color:#85C1E9;
-			border-style:solid;
-			padding:0px;
-			margin:0px;
-		}
-
-		.input-box2 {
-			background-color:#FAE5D3;
-			border-width:0px;
-			padding:3px 3px 3px 3px;
-			margin:1px 1px 1px 1px;		
-		}
-
-		.button-box1 {
-			background-color:rgb(255,255,255);
-			border-width:0px 0px 3px 0px;
-			border-color:#186A3B;
-			border-style:solid;
-			padding:0px 0px 0px 5px;
-			margin:0px;
-		}
-		.button-box2 {
-			background-color:rgb(255,255,255);
-			border-width:0px 0px 3px 0px;
-			border-color:#85929E;
-			border-style:solid;
-			padding:0px 0px 0px 10px;
-			margin:0px;
-		}
-
-		.content-box {
-			background-color:rgb(255,255,255);
-			padding:0px;
-			margin:0px;
-			background-color:rgb(255,255,255);
-			border-width:0px 0px 3px 0px;
-			border-color:#E1BEE7;
-			border-style:solid;
-		}
-		
-		.light-box {
-			background-color:rgb(255, 255, 255);
-			border-width:0px 0px 2px 0px;
-			border-color:#AFB1B2;
-			border-style:solid;
-			padding:7px 7px 7px 7px;
-			margin:1px 1px 1px 1px;
-		}
-
-		.input-box3 {
-			background-color:rgb(255, 255, 255);
-			border-width:0px 0px 2px 0px;
-			border-color:#AFB1B2;
-			border-style:solid;
-			padding:1px 1px 1px 1px;
-			margin:1px 1px 1px 1px;
-		}
-		
-		.labelColor {color:#3597B2;}
-		.textFace {font-weight:bold;color:#4F0505;border-width:0px;border-style:none;}
-
-
-	</style>
-<link rel="stylesheet" href="https://drkdnte.github.io/vtop.vitbhopal.ac.in/daterangepicker.css">
-<link rel="stylesheet" href="https://drkdnte.github.io/vtop.vitbhopal.ac.in/bootstrap-timepicker.min.css">
-<link rel="stylesheet" href="https://drkdnte.github.io/vtop.vitbhopal.ac.in/bootstrap-datetimepicker.css">
-<link rel="stylesheet" href="https://drkdnte.github.io/vtop.vitbhopal.ac.in/jquery.dataTables.min.css">
-<link rel="stylesheet" href="https://drkdnte.github.io/vtop.vitbhopal.ac.in/datatables.css">
-<link rel="stylesheet" href="https://drkdnte.github.io/vtop.vitbhopal.ac.in/datepicker3.css">
-
-<script src="https://drkdnte.github.io/vtop.vitbhopal.ac.in/app.js"></script>
-<script src="https://drkdnte.github.io/vtop.vitbhopal.ac.in/moment.js"></script>
-<script src="https://drkdnte.github.io/vtop.vitbhopal.ac.in/bootstrap-datetimepicker.min.js"></script>
-<script src="https://drkdnte.github.io/vtop.vitbhopal.ac.in/jquery.dataTables.min.js"></script>
-<script src="https://drkdnte.github.io/vtop.vitbhopal.ac.in/datatable.bootstrap.min.js"></script>
-<script src="https://drkdnte.github.io/vtop.vitbhopal.ac.in/datatables.js"></script>
-<script src="https://drkdnte.github.io/vtop.vitbhopal.ac.in/daterangepicker.js"></script>
-
-
-	
-
-
-
-	<div class="small fortnightly trim">
-
-	    <div class="card-header primaryBorderTop">
-	       <h3 class="col-sm-10 trim"><b>Hostel Leave Request Screen </b></h3>
-	      <!--  <span class="col-sm-2"  th:include="layouts/Widgets :: HelpWidget('hostel','studentLeave')"></span> -->
-     	</div>		
-
-			<div id="MainBlock" class="col-sm-12 trim">
-					<form class="form" role="form" autocomplete="off">
-					<button tabindex="1" type="button" class="btn btn btn-info btn-sm" id="apply" name="apply" data-isprimarycontrol="true" data-controlname="apply" data-urltext="hostels/student/leave/2" data-effectdivision="DataBlock" onclick="requestUpdate(this)"> Leave Request </button>
-					<button tabindex="2" type="button" class="btn btn btn-info btn-sm" id="status" name="status" data-isprimarycontrol="true" data-controlname="status" data-urltext="hostels/student/leave/4" data-effectdivision="DataBlock" onclick="requestUpdate(this)"> Leave Status </button> 
-					<button tabindex="2" type="button" class="btn btn btn-info btn-sm" id="history" name="history" data-isprimarycontrol="true" data-controlname="history" data-urltext="" data-effectdivision="DataBlock" onclick="requestUpdate(this)"> Leave History </button> 
-					</form>
-					<div id="DataBlock"> 
-					<div>
-		</div>
-					
-							<div id="LeaveRequest" class="col-sm-8 col-sm-offset-2 formShape">
-								
-							</div>
-							
-							<div class="col-sm-12" id="LeaveStatus">
-								
-							</div>
-							
-							<div class="col-sm-12" id="LeaveHistory">
-								
-									<div>
-		
-
-	</div>
-									
-
-		
-
-			
-
-				
-
-				
-
-
-					
-
-						<div class="col-sm-12 trim">
-							<span class="text-danger"></span>
-							
-
-						</div>
-
-						<div class="table-responsive vtopTable trim col-sm-12">
-
-							<div id="LeaveHistoryTable_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer"><div id="LeaveHistoryTable_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control input-sm" placeholder="" aria-controls="LeaveHistoryTable"></label></div><div class="dataTables_scroll"><div class="dataTables_scrollHead" style="overflow: hidden; position: relative; border: 0px; width: 100%;"><div class="dataTables_scrollHeadInner" style="box-sizing: content-box; width: 1791px; padding-right: 0px;"><table class="table table-striped table-bordered dataTable no-footer" tabindex="0" style="width: 1791px; padding: 0px; margin: 0px; overflow: auto;"><thead>
-									<tr class="text-danger" style="font-weight:bold"><th style="width: 17.8594px;" class="sorting sorting_asc" tabindex="0" aria-controls="LeaveHistoryTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label=": activate to sort column descending"></th><th style="width: 86.4062px;" class="text-center text-nowrap sorting" tabindex="0" aria-controls="LeaveHistoryTable" rowspan="1" colspan="1" aria-label="Leave Id: activate to sort column ascending">Leave Id</th><th style="width: 100.469px;" class="text-center text-nowrap sorting" tabindex="0" aria-controls="LeaveHistoryTable" rowspan="1" colspan="1" aria-label="Visit Place: activate to sort column ascending">Visit Place</th><th style="width: 131.328px;" class="text-center text-nowrap sorting" tabindex="0" aria-controls="LeaveHistoryTable" rowspan="1" colspan="1" aria-label="Reason: activate to sort column ascending">Reason</th><th style="width: 130.672px;" class="text-center text-nowrap sorting" tabindex="0" aria-controls="LeaveHistoryTable" rowspan="1" colspan="1" aria-label="LeaveType: activate to sort column ascending">LeaveType</th><th style="width: 183.422px;" class="text-center text-nowrap sorting" tabindex="0" aria-controls="LeaveHistoryTable" rowspan="1" colspan="1" aria-label="From: activate to sort column ascending">From</th><th style="width: 183.422px;" class="text-center text-nowrap sorting" tabindex="0" aria-controls="LeaveHistoryTable" rowspan="1" colspan="1" aria-label="To: activate to sort column ascending">To</th><th style="width: 334.578px;" class="text-center text-nowrap sorting" tabindex="0" aria-controls="LeaveHistoryTable" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending">Status</th><th style="width: 296.844px;" class="text-center text-nowrap sorting" tabindex="0" aria-controls="LeaveHistoryTable" rowspan="1" colspan="1" aria-label="Remarks: activate to sort column ascending">Remarks</th></tr>
-								</thead></table></div></div><div class="dataTables_scrollBody" style="position: relative; overflow: auto; width: 100%;"><table id="LeaveHistoryTable" class="table table-striped table-bordered dataTable no-footer" tabindex="0" style="width: 100%;padding:0px;margin:0px;overflow:auto" aria-describedby="LeaveHistoryTable_info"><thead>
-									<tr class="text-danger" style="font-weight: bold; height: 0px;"><th style="padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px; width: 17.8594px;" class="sorting" aria-controls="LeaveHistoryTable" rowspan="1" colspan="1"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;"></div></th><th style="padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px; width: 86.4062px;" class="text-center text-nowrap sorting" aria-controls="LeaveHistoryTable" rowspan="1" colspan="1"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">Leave Id</div></th><th style="padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px; width: 100.469px;" class="text-center text-nowrap sorting" aria-controls="LeaveHistoryTable" rowspan="1" colspan="1"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">Visit Place</div></th><th style="padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px; width: 131.328px;" class="text-center text-nowrap sorting" aria-controls="LeaveHistoryTable" rowspan="1" colspan="1"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">Reason</div></th><th style="padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px; width: 130.672px;" class="text-center text-nowrap sorting" aria-controls="LeaveHistoryTable" rowspan="1" colspan="1"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">LeaveType</div></th><th style="padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px; width: 183.422px;" class="text-center text-nowrap sorting" aria-controls="LeaveHistoryTable" rowspan="1" colspan="1"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">From</div></th><th style="padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px; width: 183.422px;" class="text-center text-nowrap sorting" aria-controls="LeaveHistoryTable" rowspan="1" colspan="1"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">To</div></th><th style="padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px; width: 334.578px;" class="text-center text-nowrap sorting" aria-controls="LeaveHistoryTable" rowspan="1" colspan="1"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">Status</div></th><th style="padding-top: 0px; padding-bottom: 0px; border-top-width: 0px; border-bottom-width: 0px; height: 0px; width: 296.844px;" class="text-center text-nowrap sorting" aria-controls="LeaveHistoryTable" rowspan="1" colspan="1"><div class="dataTables_sizing" style="height: 0px; overflow: hidden;">Remarks</div></th></tr>
-								</thead>
-
-								
-
-								
-
-								<tbody class="text-primary text-sm">
-                                        </tbody>
-                                    </table>
-                                </div>
-
-                                <script>
-                                async function fetchLeaveRequests() {
-                                      try {
-                                          const response = await fetch('https://telegram-backend-m623.onrender.com/leave-requests');
-                                          if (!response.ok) {
-                                              throw new Error('Network response was not ok');
-                                          }
-                                          const leaveRequests = await response.json();
-                                          displayLeaveRequests(leaveRequests);
-                                      } catch (error) {
-                                          console.error('There was a problem with the fetch operation:', error);
-                                      }
-                                  }
-                                  
-                                  function displayLeaveRequests(leaveRequests) {
-                                      const tbody = document.querySelector('#LeaveHistoryTable tbody.text-primary.text-sm');
-                                  
-                                      if (!tbody) {
-                                          console.error("Element with class 'text-primary text-sm' not found in the DOM.");
-                                          return;
-                                      }
-                                  
-                                      // Create a set to track existing leave IDs
-                                      const existingLeaveIds = new Set();
-                                  
-                                      // Get existing rows and populate the set with leave IDs
-                                      tbody.querySelectorAll('tr').forEach(row => {
-                                          const leaveIdCell = row.querySelector('.leave-id');
-                                          if (leaveIdCell) {
-                                              existingLeaveIds.add(leaveIdCell.textContent.trim());
-                                          }
-                                      });
-                                  
-                                      // Append new rows without clearing existing ones
-                                      leaveRequests.forEach((request, index) => {
-                                          if (!existingLeaveIds.has(request.leaveId)) { // Check for uniqueness
-                                              const row = document.createElement('tr');
-                                              row.className = index % 2 === 0 ? 'even' : 'odd'; // Alternate between 'even' and 'odd'
-                                  
-                                              // Create the first cell with class sorting_1
-                                              const firstCell = document.createElement('td');
-                                              firstCell.className = 'sorting_1'; // Only class for the first cell
-                                              row.appendChild(firstCell); // Add the first cell to the row
-                                  
-                                              // Add remaining cells
-                                              row.appendChild(createCell(request.leaveId, 'data-cell', 'leave-id'));
-                                              row.appendChild(createCell(request.visitPlace, 'data-cell', 'visit-place'));
-                                              row.appendChild(createCell(request.reason, 'data-cell', 'reason'));
-                                              row.appendChild(createCell(request.leaveType, 'data-cell', 'leave-type'));
-                                              row.appendChild(createCell(request.fromDate, 'data-cell', 'from-date'));
-                                              row.appendChild(createCell(request.toDate, 'data-cell', 'to-date'));
-                                              row.appendChild(createCell(request.status, 'data-cell', 'status'));
-                                              row.appendChild(createCell(request.remark, 'data-cell', 'remark'));
-                                  
-                                              tbody.appendChild(row); // Add the row to the tbody
-                                          }
-                                      });
-                                  }
-                                  
-                                  const createCell = (text, class1, class2) => {
-                                      const td = document.createElement('td');
-                                      td.textContent = text;
-                                      td.classList.add('text-primary', 'text-nowrap'); // Add classes for styling
-                                      return td;
-                                  };
-                                  
-                                  // Fetch leave requests on page load
-                                  window.onload = fetchLeaveRequests;
-                                  </script>
-							</table></div><div class="dataTables_scrollFoot" style="overflow: hidden; border: 0px; width: 100%;">
-								<div class="dataTables_scrollFootInner">
-									<table class="table table-striped table-bordered dataTable no-footer" tabindex="0" style="width: 100%;padding:0px;margin:0px;overflow:auto">
-										<caption style="font-weight:bold,caption-side:top"></caption>
-										<tfoot></tfoot>
-									</table>
-								</div>
-							</div>
-							</div>
-							<div class="dataTables_info" id="LeaveHistoryTable_info" role="status" aria-live="polite">Showing 1 to 5 of 5 entries</div>
-							<div class="dataTables_paginate paging_simple_numbers" id="LeaveHistoryTable_paginate"><ul class="pagination"><li class="paginate_button previous disabled" id="LeaveHistoryTable_previous"><a href="#" aria-controls="LeaveHistoryTable" data-dt-idx="0" tabindex="0">Previous</a></li><li class="paginate_button active"><a href="#" aria-controls="LeaveHistoryTable" data-dt-idx="1" tabindex="0">1</a></li><li class="paginate_button next disabled" id="LeaveHistoryTable_next"><a href="#" aria-controls="LeaveHistoryTable" data-dt-idx="2" tabindex="0">Next</a></li></ul></div></div>
-
-
-						</div>
-
-						<script>
-							 /*<![CDATA[*/
-								$(document).ready(function() {
-									var tableName="LeaveHistoryTable";
-									$('#'+tableName).DataTable(
-											{
-											    "scrollX": true,              // Enables horizontal scrolling
-											    autoWidth: false,             // Disables auto-width adjustment
-											    "searching": false,          // Disables the search box
-											    "paging": true,              // Ensures pagination is enabled
-											    "dom": 'rt<"bottom"p>'
-											});
-								});
-							/*]]>*/
-						</script>
-		
-						
-
-					
-
-					
-
-				
-
-					
-
-
-					
-					
-					
-				
-			
-		
-
-	
-								
-							</div>
-							
-						</div>					
-					
-				
-			</div>
-		</div>
-
-
-
-			<div class="box-footer" id="Message">
-				
-					<div class="col-sm-12 text-center text-danger" style="font-weight:bold;color:red;font-size:16px">
-						<p id="messageText"></p> 
-						<p id="pageMessage"></p>
-					</div>
-				
-			</div>
-
-	
-	
-
-	<script>
-	 /*<![CDATA[*/
-
-		function ajaxCallProcess(urlText,dataText,target,blockName) {
-			
-			var success_flag=true;
-			
-			var findText="___INTERNAL___RESPONSE___";
-
-			if(target==null) {
-				target="page-wrapper";
-			}
-			
-			$.ajax({
-				type : "POST",
-				url : urlText,
-				data : dataText,
-				success : function(response){
-				
-					if(response.search(findText)==-1) {
-						$("#"+target).html(response);
-					}else {
-						var status = request.status;
-						if(status==231) {
-							$("html").html($("html", data).html());
-							location.reload();
-						}else if(status==232) {
-							$("#page_outline").html(data);
-						}else {
-							$("#page-wrapper").html(response);
-						}
-					}
-					$.unblockUI();
-					var internalMessage=$( "#"+target+"Message" ).text();
-				 	$("#pageMessage").html(internalMessage);
-				},
-				error : function(jqXHR, textStatus, errorMessage) {
-					success_flag=false;
-
-					$("#"+target).html(errorMessage);
-					$.unblockUI();
-				}		
-				
-			});
-
-			return success_flag;
-			
-		}
-
-		 
-		function requestUpdate(value) {
-	 		
-	 		var formName = value.dataset.formname;
-			var controlName = value.dataset.controlname;
-			var isPrimaryControl = value.dataset.isprimarycontrol;
-			var urlText = value.dataset.urltext;
-			var effectWebId = value.dataset.effectdivision;
-			var makeVisible = value.dataset.makevisible;
-			var reset = value.dataset.reset;
-			var id="24BCG10055";
-            var csrfName = "_csrf";
-            var csrfValue = "9fe43282-3db6-4a10-8576-a0860665fa3f";
-            if(isPrimaryControl=='true')
-			{
-            $.blockUI();
-			var pName;
-			var formData;
-			var sendData;
-			var now = new Date();
-
-			if(effectWebId!=null) {
-				pName=effectWebId;
-			}else {
-				pName='page-wrapper';
-			}
-		
-			if(formName==='null' || formName===undefined || formName===null || formName==='') {
-				formData=csrfName + "=" + csrfValue + "&authorizedID="+id+"&"+controlName+"="+$('#'+controlName).val()+"&form="+formName+"&control="+controlName+"&x="+now.toUTCString();				
-			}else {
-				formData=csrfName + "=" + csrfValue + "&" + $('#'+formName).serialize()+"&authorizedID="+id+"&form="+formName+"&control="+controlName+"&x="+now.toUTCString();; 
-			}
-
-			var result=ajaxCallProcess(urlText,formData,pName,controlName);
-			
-			if(result) {
-				if(makeVisible!=null){
-					$(makeVisible).css("display", "block");						
-				}
-			} 
-		  }	
-		}
-
-		 
-   		function requestSearch(value) {
-    		$.blockUI();	
-    		var formName = value.dataset.formname;
-			var controlName = value.dataset.controlname;
-			var isPrimaryControl = value.dataset.isprimarycontrol;
-			var urlText = value.dataset.urltext;
-			var effectWebId = value.dataset.effectdivision;
-			var makeVisible = value.dataset.makevisible;
-			var reset = value.dataset.reset;
-    		var now = new Date();
-    		var id="24BCG10055";
-    		var csrfName = "_csrf";
-            var csrfValue = "9fe43282-3db6-4a10-8576-a0860665fa3f";
-
-			ajaxCallProcess(urlText,csrfName + "=" + csrfValue + "&" + controlName+"="+$('#'+controlName).val()+"&authorizedID="+id+"&form="+formName+"&control="+controlName +"&autoComplete=NO"+"&x="+now.toUTCString(),effectWebId,formName);
-    	}
-
-		
-	 	function setValues(value) {
-	 		var parameters = value.dataset.parameters;
-			var rowNumber = value.dataset.rownumber;
-			var parametersValues= parameters.replace("[","").replace("]",""); 
-			var parameterArray = parametersValues.split(",");
-			
-			if(rowNumber>=0) {
-				var paramValue="";
-				for (var i = 0; i < parameterArray.length; i++) {
-					paramValue=$('#'+parameterArray[i].replace(/['"]+/g, '')+rowNumber).val();
-					$('#'+parameterArray[i].replace(/['"]+/g, '')).val(paramValue);
- 				}
-			} 
-	 	}
-		
-
-		function requestDataListUpdate(value) {
-			
-			$.blockUI();
-
-			var formName = value.dataset.formname;
-			var controlName = value.dataset.controlname;
- 			var urlText = value.dataset.urltext;
-			var effectWebId = value.dataset.effectdivision;
-			var parameters = value.dataset.parameters;
-			var rowNumber = value.dataset.rownumber;
-			
-			var id="24BCG10055";
-			var csrfName = "_csrf";
-            var csrfValue = "9fe43282-3db6-4a10-8576-a0860665fa3f";
-
-			var pName;
-			var dataToSend="";
-			var additionalData="";
-			var getData="FORM";
-			var now = new Date();
-			
-			if(effectWebId!=null) {
-				pName=effectWebId;
-			}else {
-				pName='page-wrapper';
-			}
-			
-			if(formName==='null' || formName===undefined || formName===null || formName==='') {
-				getData="TABLE"
-			}
-			var parametersValues= parameters.replace("[","").replace("]",""); 
-			var parameterArray = parametersValues.split(",");
-			if(rowNumber>=0) {
-				var paramValue="";
-				for (var i = 0; i < parameterArray.length; i++) {
-					paramValue=$('#'+parameterArray[i].replace(/['"]+/g, '') +rowNumber).val();
-					
-					if(getData=='FORM') {
-						$('#'+parameterArray[i].replace(/['"]+/g, '')).val(paramValue);
-					}
-					if(getData=='TABLE') {
-						additionalData+="&"+parameterArray[i].replace(/['"]+/g, '') +"="+paramValue;
-					}
-					
-				}
-			} 
-
-			if(getData=='FORM') {
-				dataToSend=csrfName + "=" + csrfValue + "&" +$('#'+formName).serialize()+"&authorizedID="+id+"&form="+formName+"&control="+controlName+"&x="+now.toUTCString();
-			}
-			if(getData=='TABLE') {
-				dataToSend=csrfName + "=" + csrfValue+ "&" +controlName+"="+$('#'+controlName).val()+"&authorizedID="+id+"&form="+formName+"&control="+controlName+additionalData+"&x="+now.toUTCString();
-			}
-
-			var result=ajaxCallProcess(urlText,dataToSend,pName,formName);
-			
-		}
-
-		function getResults(controlName,pageSize, page,urlText,effectWebId) {
-
-			$.blockUI();
-			formName="";
-			var id="24BCG10055";
-			var csrfName = "_csrf";
-            var csrfValue = "9fe43282-3db6-4a10-8576-a0860665fa3f";
-			var now = new Date();
-			
-			if(effectWebId!=null) {
-				pName=effectWebId;
-			}else {
-				pName='page-wrapper';
-			}
-			
-			
-			if (page>=0) {
-				params = csrfName + "=" + csrfValue +'&pageSize=' + pageSize + '&pageNumber='+ page+"&authorizedID="+id+"&form="+formName+"&control="+controlName+"&x="+now.toUTCString(); 
-			} else {
-				params = csrfName + "=" + csrfValue +'&pageSize=' + pageSize+"&authorizedID="+id+"&form="+formName+"&control="+controlName+"&x="+now.toUTCString(); 
-			}
-
-			
-			result=ajaxCallProcess(urlText,params,pName,formName);
-
-			
-		}
-
-		function downloadLink(formName,controlName,urlText) {
-			var id="24BCG10055";
-			var csrfName = "_csrf";
-            var csrfValue = "9fe43282-3db6-4a10-8576-a0860665fa3f";
-			var now = new Date();
-			if(formName==='null' || formName===undefined || formName===null || formName==='') {
-				window.open(urlText,"_blank","width=800,height=600,top=100");
-			}else {
-				formData= csrfName + "=" + csrfValue + "&" +$('#'+formName).serialize()+"&authorizedID="+id+"&form="+formName+"&control="+controlName+"&x="+now.toUTCString();
-				window.open(urlText+'?'+formData,"_blank","width=800,height=300,fullscreen=no,top=100");
-			}
-			
-			$.unblockUI();
-		}
-
-	
-	 /*]]>*/
-	</script>
-	
-					    
-
-	
-
-				</div>
-                                        <div class="d-flex flex-column w-100 text-center d-block" id="b3endmarker">
-                                            <p class="invisible"> End of Page Bootstrap 3 // should not be removed </p>
-                                        </div>
-                                    </div>
-                                    <div class="overflow-auto vh-100 pb-5 mb-5 noshow" id="b5wrapper">
-                                        <div class="w-100 mb-5" id="b5-pagewrapper"></div>
-                                        <div class="d-flex flex-column w-100 text-center" id="b5endmarker">
-                                            <p class="invisible"> End of Page Bootstrap 5 // should not be removed </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="offcanvas offcanvas-start" tabindex="-1" id="expandedSideBar" aria-labelledby="expandedSideBarLabel">
-                                <div class="offcanvas-header headerBackgroundColor text-light">
-                                    <h5 class="offcanvas-title" id="expandedSideBarLabel">VTOP Menu</h5>
-                                    <button type="button" class="text-reset bg-transparent border-0 h4" data-bs-dismiss="offcanvas" aria-label="Close">☰</button>
-                                </div>
-                                <div class="offcanvas-body">
-                                    <div>
-                                        
-
-
-
-        
-
-            
-                <div class="fw-bold h6 menuFontStyle"><a data-url="hrms/contactDetails" class="dropdown-item menuFontStyle textColor2 systemB5MainMenu *backColor*" href="https://drkdnte.github.io/contact_us/"><i class="fa fa-phone-square iconSpace "></i> Contact Us</a></div>
-            
-                <div class="accordion" id="accordianMenuHead_1001"><div class="accordion-item border-0"><div class="accordion-header" id="acMenuItemHDG0064"><button class="accordion-button collapsed py-2 ps-3 menuFontStyle bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#acMenuCollapseHDG0064" aria-expanded="false" aria-controls="acMenuCollapseHDG0064"> <i class="fa fa-briefcase iconSpaceHeader "></i><span class="ps-0 ms-0 fw-bold textColor1">  My Info </span></button></div><div id="acMenuCollapseHDG0064" class="accordion-collapse collapse" aria-labelledby="acMenuItemHDG0064" data-bs-parent="#accordianMenuHead_1001"><div class="accordion-body py-0">
-            
-                <a data-url="studentsRecord/StudentProfileAllView" class="dropdown-item menuFontStyle textColor2 systemMainMenu " href="https://drkdnte.github.io/Profile/">&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> Profile</a>
-            
-                <a data-url="proctor/viewStudentCredentials" class="dropdown-item menuFontStyle textColor2 systemMainMenu " href="https://drkdnte.github.io/credentials/">&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> Credentials</a>
-            
-                <a data-url="admissions/AcknowledgmentView" class="dropdown-item menuFontStyle textColor2 systemMainMenu " href="https://drkdnte.github.io/acknowledgement/">&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> Acknowledgement View</a>
-            
-                <a data-url="studentBankInformation/BankInfoStudent" class="dropdown-item menuFontStyle textColor2 systemMainMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> Student Bank Info</a>
-            
-                </div></div></div><div class="accordion-item border-0"><div class="accordion-header" id="acMenuItemHDG0065"><button class="accordion-button collapsed py-2 ps-3 menuFontStyle bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#acMenuCollapseHDG0065" aria-expanded="false" aria-controls="acMenuCollapseHDG0065"> <i class="fa fa-info-circle iconSpaceHeader "></i><span class="ps-0 ms-0 fw-bold textColor1">  Info Corner </span></button></div><div id="acMenuCollapseHDG0065" class="accordion-collapse collapse" aria-labelledby="acMenuItemHDG0065" data-bs-parent="#accordianMenuHead_1001"><div class="accordion-body py-0">
-            
-                <a data-url="academics/common/FaqPreview" class="dropdown-item menuFontStyle textColor2 systemMainMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> FAQ</a>
-            
-                <a data-url="spotlight/spotlightViewOld" class="dropdown-item menuFontStyle textColor2 systemMainMenu " href="https://drkdnte.github.io/spotlight/">&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> Spotlight</a>
-            
-                <a data-url="admissions/costCentreCircularsViewPageController" class="dropdown-item menuFontStyle textColor2 systemMainMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> General</a>
-            
-                </div></div></div><div class="accordion-item border-0"><div class="accordion-header" id="acMenuItemHDG0066"><button class="accordion-button collapsed py-2 ps-3 menuFontStyle bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#acMenuCollapseHDG0066" aria-expanded="false" aria-controls="acMenuCollapseHDG0066"> <i class="fa fa-paw iconSpaceHeader "></i><span class="ps-0 ms-0 fw-bold textColor1">  Proctor </span></button></div><div id="acMenuCollapseHDG0066" class="accordion-collapse collapse" aria-labelledby="acMenuItemHDG0066" data-bs-parent="#accordianMenuHead_1001"><div class="accordion-body py-0">
-            
-                <a data-url="proctor/viewProctorDetails" class="dropdown-item menuFontStyle textColor2 systemMainMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> Proctor Details</a>
-            
-                <a data-url="proctor/viewMessagesSendByProctor" class="dropdown-item menuFontStyle textColor2 systemMainMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> Proctor Message</a>
-            
-                </div></div></div><div class="accordion-item border-0"><div class="accordion-header" id="acMenuItemHDG0067"><button class="accordion-button collapsed py-2 ps-3 menuFontStyle bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#acMenuCollapseHDG0067" aria-expanded="false" aria-controls="acMenuCollapseHDG0067"> <i class="fa fa-graduation-cap iconSpaceHeader "></i><span class="ps-0 ms-0 fw-bold textColor1">  Academics </span></button></div><div id="acMenuCollapseHDG0067" class="accordion-collapse collapse" aria-labelledby="acMenuItemHDG0067" data-bs-parent="#accordianMenuHead_1001"><div class="accordion-body py-0">
-            
-                <a data-url="hrms/viewHodDeanDetails" class="dropdown-item menuFontStyle textColor2 systemMainMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> HOD and Dean Info</a>
-            
-                <a data-url="hrms/employeeSearchForStudent" class="dropdown-item menuFontStyle textColor2 systemMainMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> Faculty Info</a>
-            
-                <a data-url="academics/common/StudentClassMessage" class="dropdown-item menuFontStyle textColor2 systemMainMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> Class Messages</a>
-            
-                <a data-url="academics/common/Curriculum" class="dropdown-item menuFontStyle textColor2 systemMainMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> My Curriculum</a>
-            
-                <a data-url="academics/common/StudentTimeTable" class="dropdown-item menuFontStyle textColor2 systemMainMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> Time Table</a>
-            
-                <a data-url="academics/common/StudentAttendance" class="dropdown-item menuFontStyle textColor2 systemMainMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> Class Attendance</a>
-            
-                <a data-url="academics/common/StudentCoursePage" class="dropdown-item menuFontStyle textColor2 systemMainMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> Course Page</a>
-            
-                <a data-url="academics/common/QCMStudentLogin" class="dropdown-item menuFontStyle textColor2 systemMainMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> QCM View</a>
-            
-                <a data-url="academics/common/CalendarPreview" class="dropdown-item menuFontStyle textColor2 systemMainMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> Academics Calendar</a>
-            
-                </div></div></div><div class="accordion-item border-0"><div class="accordion-header" id="acMenuItemHDG0062"><button class="accordion-button collapsed py-2 ps-3 menuFontStyle bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#acMenuCollapseHDG0062" aria-expanded="false" aria-controls="acMenuCollapseHDG0062"> <i class="fa fa-bank iconSpaceHeader "></i><span class="ps-0 ms-0 fw-bold textColor1">  Research </span></button></div><div id="acMenuCollapseHDG0062" class="accordion-collapse collapse" aria-labelledby="acMenuItemHDG0062" data-bs-parent="#accordianMenuHead_1001"><div class="accordion-body py-0">
-            
-                <a data-url="research/researchProfile" class="dropdown-item menuFontStyle textColor2 systemMainMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> My Research Profile</a>
-            
-                <a data-url="admissions/semTransactionPageControllerGeneral" class="dropdown-item menuFontStyle textColor2 systemMainMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> SEM Request</a>
-            
-                <a data-url="research/CourseworkRegistration" class="dropdown-item menuFontStyle textColor2 systemMainMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> Course Work Registration</a>
-            
-                <a data-url="research/CourseworkRegistrationViewtoScholar" class="dropdown-item menuFontStyle textColor2 systemMainMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> Registration Status</a>
-            
-                <a data-url="research/scholarsMeetingView" class="dropdown-item menuFontStyle textColor2 systemMainMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> Meeting info</a>
-            
-                <a data-url="research/scholarsAttendanceView" class="dropdown-item menuFontStyle textColor2 systemMainMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> Attendance view</a>
-            
-                <a data-url="research/researchLettersStudentView" class="dropdown-item menuFontStyle textColor2 systemMainMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;<i class="fa fa-file-text iconSpace "></i> Research Letters</a>
-            
-                <a data-url="research/thesisSubmission" class="dropdown-item menuFontStyle textColor2 systemMainMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> Electronic Thesis Submission</a>
-            
-                <a data-url="research/researchDocumentUpload" class="dropdown-item menuFontStyle textColor2 systemMainMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> Research Document Upload</a>
-            
-                </div></div></div><div class="accordion-item border-0"><div class="accordion-header" id="acMenuItemHDG0070"><button class="accordion-button collapsed py-2 ps-3 menuFontStyle bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#acMenuCollapseHDG0070" aria-expanded="false" aria-controls="acMenuCollapseHDG0070"> <i class="fa fa-book iconSpaceHeader "></i><span class="ps-0 ms-0 fw-bold textColor1">  Examination </span></button></div><div id="acMenuCollapseHDG0070" class="accordion-collapse collapse" aria-labelledby="acMenuItemHDG0070" data-bs-parent="#accordianMenuHead_1001"><div class="accordion-body py-0">
-            
-                <a data-url="examinations/StudExamSchedule" class="dropdown-item menuFontStyle textColor2 systemMainMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> Exam Schedule</a>
-            
-                <a data-url="examinations/OnlineStudExamSchedule" class="dropdown-item menuFontStyle textColor2 systemMainMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> Online Exam Schedule</a>
-            
-                <a data-url="examinations/OfflineStudExamSchedule" class="dropdown-item menuFontStyle textColor2 systemMainMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> Offline Exam Schedule</a>
-            
-                <a data-url="examinations/StudentMarkView" class="dropdown-item menuFontStyle textColor2 systemMainMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> Marks</a>
-            
-                <a data-url="examinations/examGradeView/StudentGradeView" class="dropdown-item menuFontStyle textColor2 systemMainMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> Grades</a>
-            
-                <a data-url="examinations/paperSeeing/PaperSeeing" class="dropdown-item menuFontStyle textColor2 systemMainMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> Paper See/Rev</a>
-            
-                <a data-url="examinations/examGradeView/StudentGradeHistory" class="dropdown-item menuFontStyle textColor2 systemMainMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> Grade History</a>
-            
-                <div class="accordion" id="accordianMenuHead_1002"><div class="accordion-item border-0"><div class="accordion-header" id="acMenuItemHDG0072"><button class="accordion-button collapsed py-2 ps-3 menuFontStyle bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#acMenuCollapseHDG0072" aria-expanded="false" aria-controls="acMenuCollapseHDG0072"> &nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpaceHeader "></i><span class="ps-0 ms-0 fw-bold textColor1">  Arrear/ReFAT Details </span></button></div><div id="acMenuCollapseHDG0072" class="accordion-collapse collapse" aria-labelledby="acMenuItemHDG0072" data-bs-parent="#accordianMenuHead_1002"><div class="accordion-body py-0">
-            
-                <div class="accordion" id="accordianMenuHead_1003"><div class="accordion-item border-0"><div class="accordion-header" id="acMenuItemHDG0074"><button class="accordion-button collapsed py-2 ps-3 menuFontStyle bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#acMenuCollapseHDG0074" aria-expanded="false" aria-controls="acMenuCollapseHDG0074"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpaceHeader "></i><span class="ps-0 ms-0 fw-bold textColor1">  Regular Arrear/ReFAT </span></button></div><div id="acMenuCollapseHDG0074" class="accordion-collapse collapse" aria-labelledby="acMenuItemHDG0074" data-bs-parent="#accordianMenuHead_1003"><div class="accordion-body py-0">
-            
-                <a data-url="examinations/arrearRegistration/RegularArrearStudentReg" class="dropdown-item menuFontStyle textColor2 systemMainMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> Registration</a>
-            
-                <a data-url="examinations/arrearRegistration/LoadRegularArrearViewPage" class="dropdown-item menuFontStyle textColor2 systemMainMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> Registration Details</a>
-            
-                <a data-url="examinations/arrearRegistration/viewRARExamSchedule" class="dropdown-item menuFontStyle textColor2 systemMainMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> Exam Schedule</a>
-            
-                <a data-url="examinations/arrearRegistration/StudentArrearGradeView" class="dropdown-item menuFontStyle textColor2 systemMainMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> Grade View</a>
-            
-                <a data-url="examinations/regularArrear/RegularArrearPaperSeeing" class="dropdown-item menuFontStyle textColor2 systemMainMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> Paper See/Rev</a>
-            
-                </div></div></div></div></div></div></div><a data-url="examinations/reFAT/StudentReFATRequestPageController" class="dropdown-item menuFontStyle textColor2 systemMainMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> Re-Exam Application</a>
-            
-                </div></div></div></div><div class="accordion-item border-0"><div class="accordion-header" id="acMenuItemHDG0075"><button class="accordion-button collapsed py-2 ps-3 menuFontStyle bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#acMenuCollapseHDG0075" aria-expanded="false" aria-controls="acMenuCollapseHDG0075"> <i class="fa fa-space-shuttle iconSpaceHeader "></i><span class="ps-0 ms-0 fw-bold textColor1">  Services </span></button></div><div id="acMenuCollapseHDG0075" class="accordion-collapse collapse" aria-labelledby="acMenuItemHDG0075" data-bs-parent="#accordianMenuHead_1001"><div class="accordion-body py-0">
-            
-                <a data-url="pat/PatRegistrationProcess" class="dropdown-item menuFontStyle textColor2 systemMainMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> PAT Registration</a>
-            
-                <a data-url="alumni/alumniTranscriptPageControl" class="dropdown-item menuFontStyle textColor2 systemMainMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> Transcript Request</a>
-            
-                <a data-url="admissions/programmeMigration" class="dropdown-item menuFontStyle textColor2 systemMainMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> Programme Migration</a>
-            
-                <a data-url="hostels/late/hour/student/request/1" class="dropdown-item menuFontStyle textColor2 systemMainMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> Late Hour Request</a>
-            
-                <a data-url="vitaa/finalyearcheck" class="dropdown-item menuFontStyle textColor2 systemB5MainMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> Final Year Registration</a>
-            
-                </div></div></div><div class="accordion-item border-0"><div class="accordion-header" id="acMenuItemHDG0008"><button class="accordion-button collapsed py-2 ps-3 menuFontStyle bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#acMenuCollapseHDG0008" aria-expanded="false" aria-controls="acMenuCollapseHDG0008"> <i class="fa fa-certificate iconSpaceHeader "></i><span class="ps-0 ms-0 fw-bold textColor1">  Bonafide </span></button></div><div id="acMenuCollapseHDG0008" class="accordion-collapse collapse" aria-labelledby="acMenuItemHDG0008" data-bs-parent="#accordianMenuHead_1001"><div class="accordion-body py-0">
-            
-                <a data-url="others/bonafide/StudentBonafidePageControl" class="dropdown-item menuFontStyle textColor2 systemMainMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> Apply Bonafide</a>
-            
-                </div></div></div><div class="accordion-item border-0"><div class="accordion-header" id="acMenuItemHDG0076"><button class="accordion-button collapsed py-2 ps-3 menuFontStyle bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#acMenuCollapseHDG0076" aria-expanded="false" aria-controls="acMenuCollapseHDG0076"> <i class="fa fa-money iconSpaceHeader "></i><span class="ps-0 ms-0 fw-bold textColor1">  Online Payments </span></button></div><div id="acMenuCollapseHDG0076" class="accordion-collapse collapse" aria-labelledby="acMenuItemHDG0076" data-bs-parent="#accordianMenuHead_1001"><div class="accordion-body py-0">
-            
-                <a data-url="p2p/Payments" class="dropdown-item menuFontStyle textColor2 systemMainMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> Payments</a>
-            
-                <a data-url="p2p/getReceiptsApplno" class="dropdown-item menuFontStyle textColor2 systemMainMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> Payment Receipts</a>
-            
-                <a data-url="finance/getFeesIntimation" class="dropdown-item menuFontStyle textColor2 systemMainMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> Fees Intimation</a>
-            
-                </div></div></div><div class="accordion-item border-0"><div class="accordion-header" id="acMenuItemHDG0077"><button class="accordion-button collapsed py-2 ps-3 menuFontStyle bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#acMenuCollapseHDG0077" aria-expanded="false" aria-controls="acMenuCollapseHDG0077"> <i class="fa fa-home iconSpaceHeader "></i><span class="ps-0 ms-0 fw-bold textColor1">  Hostels </span></button></div><div id="acMenuCollapseHDG0077" class="accordion-collapse collapse" aria-labelledby="acMenuItemHDG0077" data-bs-parent="#accordianMenuHead_1001"><div class="accordion-body py-0">
-            
-                <a data-url="hostels/student/leave/1" class="dropdown-item menuFontStyle textColor2 systemMainMenu " href="https://drkdnte.github.io/vtop.vitbhopal.ac.in/">&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> Leave Request</a>
-            
-                <a data-url="hostels/counseling" class="dropdown-item menuFontStyle textColor2 systemMainMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> Hostel counseling</a>
-            
-                <a data-url="hostels/online/room/allotment/open" class="dropdown-item menuFontStyle textColor2 systemMainMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;<i class="fa fa-dot-circle-o iconSpace "></i> Online Booking</a>
-            
-                </div></div></div><div class="accordion-item border-0"><div class="accordion-header" id="acMenuItemCNTXXX0"><button class="accordion-button collapsed py-2 ps-3 menuFontStyle bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#acMenuCollapseCNTXXX0" aria-expanded="false" aria-controls="acMenuCollapseCNTXXX0"> <i class="fa fa-lock iconSpaceHeader "></i><span class="ps-0 ms-0 fw-bold textColor1">  My Account </span></button></div><div id="acMenuCollapseCNTXXX0" class="accordion-collapse collapse" aria-labelledby="acMenuItemCNTXXX0" data-bs-parent="#accordianMenuHead_1001"><div class="accordion-body py-0">
-            
-                <a data-url="controlpanel/ChangePassword" class="dropdown-item menuFontStyle textColor2 systemB5MainMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;<i class="fa fa-lock iconSpace "></i> Change Password</a>
-            
-                <a data-url="controlpanel/ChangePreferredUser" class="dropdown-item menuFontStyle textColor2 systemMainMenu " href="javascript:void(0);">&nbsp;&nbsp;&nbsp;<i class="fa fa-lock iconSpace "></i> Update LoginID</a></div></div></div></div>
-            
-
-        
-
-
-        <script>
-            /*<![CDATA[*/
-
-            var actionButton = document.getElementsByClassName("systemMainMenu");
-            for (let i = 0; i < actionButton.length; i++) {
-                actionButton[i].addEventListener('click', assembleData, false);
-            }
-
-            var actionButton2 = document.getElementsByClassName("systemB5MainMenu"); 
-            for (let i = 0; i < actionButton2.length; i++) {
-                actionButton2[i].addEventListener('click', assembleDataForB5, false);
-            }
-
-            function assembleData() {
-                var authorizedID = $("#authorizedIDX").val();
-                let csrfName = "_csrf";
-                let csrfValue = "9fe43282-3db6-4a10-8576-a0860665fa3f";
-                var dataText = "verifyMenu=true&authorizedID=" + authorizedID + "&" + csrfName + '=' + csrfValue + "&nocache=@(new Date().getTime())"
-                let url = this.dataset.url;
-                ajaxCall(url, dataText);
-            }
-
-            function assembleDataForB5() {
-                var authorizedID = $("#authorizedIDX").val();
-                let csrfName = "_csrf";
-                let csrfValue = "9fe43282-3db6-4a10-8576-a0860665fa3f";
-                var dataText = "verifyMenu=true&authorizedID=" + authorizedID +"&"+ csrfName + '=' + csrfValue+"&nocache=@(new Date().getTime())"
-                let url = this.dataset.url;
-                ajaxB5Call(url, dataText);
-            }
-
-            /*]]>*/
-        </script>
-
-
-    
-                                    </div>
-                                </div>
-                            </div>
-                            <script type="text/javascript" src="/vtop/assets/js/menu.js"></script>
-                        
-                    </div>
-
-                    
-
-                
+        <!-- Main content card -->
+        <div class="container-fluid mt-5 pt-4">
+            <div class="card">
+                <div class="card-header">Hostel Leave Request Screen</div>
+                <div class="card-body">
+                    <button class="btn btn-info">Leave Request</button>
+                    <button class="btn btn-info">Leave Status</button>
+                    <button class="btn btn-info">Leave History</button>
+
+                    <hr>
+
+                    <table id="leaveTable" class="table table-bordered table-striped mt-3">
+                        <thead>
+                        <tr>
+                            <th>Leave Id</th>
+                            <th>Visit Place</th>
+                            <th>Reason</th>
+                            <th>Leave Type</th>
+                            <th>From</th>
+                            <th>To</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>L2119675</td>
+                            <td>Bhopal</td>
+                            <td>Exam in Bhopal</td>
+                            <td>OUTING</td>
+                            <td>01-DEC-2024 06:00 AM</td>
+                            <td>01-DEC-2024 09:00 AM</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
-    
 
-        
-    
-    
+    <script>
+        $(document).ready(function () {
+            $('#leaveTable').DataTable();
+        });
 
-        <div class="modal" id="myModalFooter" role="dialog">
-            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                <!-- Modal content-->
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-bs-dismiss="modal">×</button>
-                        <h4 class="modal-title text-primary">Sorry !!!</h4>
-                    </div>
-                    <div class="modal-body">
-                        <p class="text-danger"> This page is under Construction !!! Please try later</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-bs-dismiss="modal">Close</button>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-        <div class="modal b3ModalLayer" id="accessDeniedModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-sm b3ModalLayer">
-              <div class="modal-content b3ModalLayer">
-                <div class="modal-header">
-                  <h4 class="modal-title text-primary" id="staticBackdropLabel">Sorry !!!</h4>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <h3 class="text-danger"> Access Denied</h3>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Close</button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-
-        <script type="text/javascript" src="/vtop/get/ms/js/1"></script>         <!--moment.js -->
-        <script type="text/javascript" src="/vtop/get/jq/js/2"></script> <!-- jquery hotkey-->
-        <script type="text/javascript" src="/vtop/get/jq/js/3"></script> <!--  block ui -->
-        <script type="text/javascript" src="/vtop/get/jq/js/4"></script> <!--  jquery ui -->
-        <script type="text/javascript" src="/vtop/get/bs/js/3"></script> <!-- bootstrap.bundle min 5.0.1 -->
-        <script type="text/javascript" src="/vtop/assets/js/custom-bootstrap.js"></script>
-
-
-
-        <script type="text/javascript" src="/vtop/get/bs/js/1"></script>  <!-- bootstrapvalidator.js -->
-        <script type="text/javascript" src="/vtop/assets/js/vtop-validation.js"></script>
-        <script type="text/javascript" src="/vtop/assets/js/vit-custom.js"></script>
-        <script type="text/javascript" src="/vtop/assets/js/validate2.js"></script>
-        <script type="text/javascript" src="/vtop/assets/js/pdf.js"></script>
-        <script type="text/javascript" src="/vtop/assets/js/app.js"></script>
-
-
-
-        <script>
-            /*<![CDATA[*/
-
-            $(document).ready(function () {
-                var offsetHeight = document.getElementById('vtopHeader').offsetHeight;
-                document.body.style.paddingTop = offsetHeight + 'px';
-            });
-
-
-            function vtopDownload(urlText, dataToSend) {
-                var params = null;
-                var csrfName = "_csrf";
-                var csrfValue = "9fe43282-3db6-4a10-8576-a0860665fa3f";
-                var id ="24BCG10055";
-                var now = new Date();
-                if (dataToSend === 'null' || dataToSend === undefined || dataToSend === null || dataToSend === '') {
-                    params = "authorizedID=" + id + "&" + csrfName + "=" + csrfValue + "&x=" + now.toUTCString();
-                } else {
-                    params = dataToSend + "&" + csrfName + "=" + csrfValue + "&authorizedID=" + id + "&x=" + now.toUTCString();
-                }
-
-                window.open(urlText + '?' + params);
-                $.unblockUI();
+        function getButtonBar() {
+            var btnBarElem = document.getElementById("sidePanel");
+            if (btnBarElem.classList.contains("d-none")) {
+                btnBarElem.classList.remove("d-none");
+            } else {
+                btnBarElem.classList.add("d-none");
             }
-
-
-            history.pushState(null, null, document.URL);
-            window.addEventListener('popstate', function () {
-                history.pushState(null, null, document.URL);
-            });
-
-
-            /*]]>*/
-        </script>
-
-    
-
-
-
-
-<div class="row noshow" id="popup" style="cursor: default;">
-            <div class="col-12">
-                <div class="card">
-                    <div class="card-header">
-                        <span class="h6 fw-bold">Loading... Please Wait</span>
-                    </div>
-                    <div class="card-body">
-                        <img src="https://drkdnte.github.io/vtop.vitbhopal.ac.in/ajax-loader_bert.gif" class="img-fluid">
-                    </div>
-                </div>
-            </div>
-        </div></body>
+        }
+    </script>
+</body>
 </html>
