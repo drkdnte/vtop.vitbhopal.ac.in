@@ -515,12 +515,14 @@
 	      <!--  <span class="col-sm-2"  th:include="layouts/Widgets :: HelpWidget('hostel','studentLeave')"></span> -->
      	</div>		
 
-			<div id="MainBlock" class="col-sm-12 trim">
-				
-
-					<form class="form" role="form" autocomplete="off">
-						<div class="nav nav-tabs col-sm-12"> 
+			<div id="MainBlock">
 							
+								<div style="display: none">
+									<p id="MenuBlockMessage"></p>
+								</div>
+								<form class="row gy-2 gx-3 align-items-center needs-validation" novalidate="" role="form" autocomplete="off">
+									<div class="col-auto">
+										
 
 
 		
@@ -544,9 +546,6 @@
 
 
 				
-
-
-
 
 						
 				
@@ -585,7 +584,9 @@
 			
 		
 	
-							
+									</div>
+									<div class="col-auto">
+										
 
 
 		
@@ -609,9 +610,6 @@
 
 
 				
-
-
-
 
 						
 				
@@ -650,7 +648,9 @@
 			
 		
 	
-						  	
+									</div>
+									<div class="col-auto">
+										
 
 
 		
@@ -675,9 +675,6 @@
 
 				
 
-
-
-
 						
 				
 								
@@ -694,7 +691,7 @@
 			
 				
 					
-					<button tabindex="2" type="button" class="btn btn btn-info btn-sm" id="history" name="history" data-isprimarycontrol="true" data-controlname="history" data-urltext="" data-effectdivision="DataBlock" onclick="requestUpdate(this)"> Leave History </button> 
+					<button tabindex="2" type="button" class="btn btn btn-info btn-sm" id="history" name="history" data-isprimarycontrol="true" data-controlname="history" data-urltext="hostels/student/leave/6" data-effectdivision="DataBlock" onclick="requestUpdate(this)"> Leave History </button> 
 				
 				
 				
@@ -715,8 +712,27 @@
 			
 		
 	
+									</div>
+								</form>
+								<div id="DataBlock" class="mt-5 mb-5">
+									
+										<div>
+		
+
+	</div>
+										<div id="LeaveRequest">
+											
+										</div>
+										<div id="LeaveStatus">
+											
+										</div>
+										<div id="LeaveHistory">
+											
+										</div>
+ 									
+								</div>
+							
 						</div>
-					</form>
 						
 					
 					<div id="DataBlock"> 
