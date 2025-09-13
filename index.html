@@ -508,22 +508,15 @@
 
 
 
-	<div class="small fortnightly trim">
-
-	    <div class="card-header primaryBorderTop">
-	       <h3 class="col-sm-10 trim"><b>Hostel Leave Request Screen </b></h3>
-	      <!--  <span class="col-sm-2"  th:include="layouts/Widgets :: HelpWidget('hostel','studentLeave')"></span> -->
-     	</div>		
-
-			<div id="MainBlock" class="col-sm-12 trim">
-					<form class="form" role="form" autocomplete="off">
-					<button tabindex="1" type="button" class="btn btn btn-info btn-sm" id="apply" name="apply" data-isprimarycontrol="true" data-controlname="apply" data-urltext="hostels/student/leave/2" data-effectdivision="DataBlock" onclick="requestUpdate(this)"> Leave Request </button>
-					<button tabindex="2" type="button" class="btn btn btn-info btn-sm" id="status" name="status" data-isprimarycontrol="true" data-controlname="status" data-urltext="hostels/student/leave/4" data-effectdivision="DataBlock" onclick="requestUpdate(this)"> Leave Status </button> 
-					<button tabindex="2" type="button" class="btn btn btn-info btn-sm" id="history" name="history" data-isprimarycontrol="true" data-controlname="history" data-urltext="" data-effectdivision="DataBlock" onclick="requestUpdate(this)"> Leave History </button> 
-					</form>
-					<div id="DataBlock"> 
-					<div>
-		</div>
+<div class="container-fluid mt-5 pt-4">
+  <div class="card shadow-sm rounded">
+    <div class="card-header">Hostel Leave Request Screen</div>
+    <div class="card-body">
+      <div class="btn-group mb-3" role="group" aria-label="Leave buttons">
+        <button class="btn btn-info">Leave Request</button>
+        <button class="btn btn-info">Leave Status</button>
+        <button class="btn btn-info">Leave History</button>
+      </div>
 					
 							<div id="LeaveRequest" class="col-sm-8 col-sm-offset-2 formShape">
 								
@@ -536,9 +529,7 @@
 							<div class="col-sm-12" id="LeaveHistory">
 								
 									<div>
-		
-
-	</div>
+		</div>
 									
 
 		
